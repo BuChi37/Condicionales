@@ -1,1 +1,0 @@
-# Separar infraestructura del modelo 
