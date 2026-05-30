@@ -35,4 +35,26 @@ public class CatalogoMaterias extends Lista2DLinkedL{
 		return buscar(materia) != -1;
 	}
 
+	
+	public Materia getMateria(int codigo) {
+		
+		Materia  materia = new Materia( codigo, " ", 0);
+		
+		int pos = buscar(materia);
+		
+		if(pos != -1) {
+			
+			Materia materiaDevuelta = (Materia) devolver(pos);
+			
+			return materiaDevuelta;
+		}
+		
+		else return null;
+	}
+	
+	public void AgregarMateria( Materia materia) {
+		
+		insertar(materia);
+		
+	}
 }
