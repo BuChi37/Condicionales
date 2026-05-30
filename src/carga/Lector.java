@@ -6,6 +6,9 @@ import java.io.IOException;
 
 import modelo.Alumno;
 import modelo.CatalogoMaterias;
+import modelo.EstadoAcademico;
+import modelo.EstadoMateria;
+import modelo.HistorialAlumnos;
 import modelo.ListaAlumnos;
 import modelo.Materia;
 
@@ -90,11 +93,12 @@ public class Lector {
                 
                 Alumno alumno = new Alumno(id, nombre);
               
-                String rutaHistorial = ruta+"/historiales"+"/"+id+"H.csv"; 
+                String rutaHistorial = ruta+".Historiales"+"/"+id+"H.csv"; 
 
                 
-                //cargar historial;
-                //leerHistorial(rutaHistorial, alumno);
+                
+                
+                leerHistorial(rutaHistorial, alumno);
                 
                 listaAlumnos.insertar(alumno);
                
@@ -105,5 +109,35 @@ public class Lector {
         }
     }
 	
-	
+	private void leerHistorial (String ruta, Alumno alumno) {
+		String rutaAlumno= ruta+"/alumnos.csv";
+        try(BufferedReader brA= new BufferedReader(new FileReader(rutaAlumno) ) ){
+            String linea;
+         
+            
+            while(  (linea= brA.readLine())!= null ){
+                  
+                
+                if(linea.startsWith("\uFEFF")){
+                    linea = linea.substring(1);
+                }
+                String[] datos = linea.split(";");
+                
+                int Codigo = Integer.parseInt(datos[0].trim());
+                int estado = Integer.parseInt(datos[1].trim());
+                
+                EstadoAcademico estadoAcademico = EstadoAcademico.values()[estado];
+                
+                EstadoMateria estadoMateria = new EstadoMateria(Codigo, estadoAcademico);
+                
+                alumno.agregarEstado(estadoMateria);
+                
+            }
+        
+        }catch(Exception e){
+            System.out.println(e);
+        }
+		
+		
+	}
 }
