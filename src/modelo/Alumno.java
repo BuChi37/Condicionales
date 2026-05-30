@@ -18,4 +18,12 @@ public class Alumno {
 	}
 	
 	
+	public int getLegajo() {
+		
+		return this.legajo;
+	}
+	
+	public String getNombre() {
+		return this.nombre;
+	}
 }
