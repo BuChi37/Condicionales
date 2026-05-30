@@ -47,9 +47,25 @@ public abstract class Lista2DLinkedL extends Lista0DLinkedL implements Operacion
 	public abstract boolean esMayor(Object elemento1, Object elemento2);
 	
 	// implementar alg�n metodo de b�squeda
+	
 	public int buscar(Object elemento){
-		// implementar!!!
-		return -1;
+		
+		int posicion = -1; int contador = 0;
+		Object unElemento;
+		NodoDoble temp;
+		temp = this.frenteL;
+
+		while(temp != null && posicion == -1){
+			unElemento = temp.getNodoInfo();
+			if(iguales(unElemento, elemento)){
+				posicion = contador;
+			}else{
+				contador++;
+				temp = temp.getNextNodo();
+			}
+
+		}
+		return posicion;
 	}
 	
 }
