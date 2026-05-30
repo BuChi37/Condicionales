@@ -1,5 +1,109 @@
 package carga;
 
-public class Lector {
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
+import modelo.Alumno;
+import modelo.CatalogoMaterias;
+import modelo.ListaAlumnos;
+import modelo.Materia;
+
+public class Lector {
+	
+	
+	
+	public int  leerTamanio(String ruta) {
+		
+		String rutaMaterias = ruta +"/Materias.csv";
+        int tamanio = 0;
+        
+        
+        try(BufferedReader br = new BufferedReader(new FileReader(rutaMaterias))){
+        
+            String linea;
+            
+            while(  (linea = br.readLine() ) != null){
+                
+                tamanio++;
+            }
+        
+        
+        
+        }catch(Exception e){
+            System.out.println(e);
+        }
+        
+        return tamanio;
+		
+	}
+	
+	private void leerMateria(String ruta, CatalogoMaterias lista) {
+		
+		String rutaMateria = ruta +"/Materias.csv";
+		
+		try(BufferedReader br = new BufferedReader( new FileReader(rutaMateria) ) ){
+			
+			String linea;
+			
+			while( (linea = br.readLine())!= null ) {
+				
+				if(linea.startsWith("\uFEFF")){
+                    linea = linea.substring(1);
+                }
+				
+				String[] datos = linea.split(";");
+				
+				int codigoMateria  = Integer.parseInt(datos[0].trim());
+				String nombre = datos[1];
+				int anio = Integer.parseInt(datos[2].trim());
+				
+				Materia materia = new Materia(codigoMateria, nombre, anio);
+				
+				lista.AgregarMateria( materia);
+				
+			}
+			
+		}catch (Exception e) {
+			System.out.println(e);
+		}
+		
+	}
+	
+	private void leerAlumnos(String ruta, ListaAlumnos listaAlumnos){
+        String rutaAlumno= ruta+"/alumnos.csv";
+        try(BufferedReader brA= new BufferedReader(new FileReader(rutaAlumno) ) ){
+            String linea;
+         
+            
+            while(  (linea= brA.readLine())!= null ){
+                  
+                
+                if(linea.startsWith("\uFEFF")){
+                    linea = linea.substring(1);
+                }
+                String[] datos = linea.split(";");
+                
+                
+                int id = Integer.parseInt(datos[0].trim());
+                String nombre = datos[1];
+                
+                Alumno alumno = new Alumno(id, nombre);
+              
+                String rutaHistorial = ruta+"/historiales"+"/"+id+"H.csv"; 
+
+                
+                //cargar historial;
+                //leerHistorial(rutaHistorial, alumno);
+                
+                listaAlumnos.insertar(alumno);
+               
+            }
+        
+        }catch(Exception e){
+            System.out.println(e);
+        }
+    }
+	
+	
 }
