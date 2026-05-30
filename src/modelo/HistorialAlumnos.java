@@ -7,19 +7,19 @@ public class HistorialAlumnos extends Lista2DLinkedL{
 	@Override
 	public boolean iguales(Object elemento1, Object elemento2) {
 		
-		return   (   ((EstadoMateria)elemento1).getCodigo() ==  ((EstadoMateria)elemento2).getCodigo()  )  ;
+		return   (   ((EstadoMateria)elemento1).getCodigoMateria() ==  ((EstadoMateria)elemento2).getCodigoMateria()  )  ;
 	}
 
 	@Override
 	public boolean esMenor(Object elemento1, Object elemento2) {
 		
-		return   (   ((EstadoMateria)elemento1).getCodigo() <  ((EstadoMateria)elemento2).getCodigo()  )  ;
+		return   (   ((EstadoMateria)elemento1).getCodigoMateria() <  ((EstadoMateria)elemento2).getCodigoMateria()  )  ;
 	}
 
 	@Override
 	public boolean esMayor(Object elemento1, Object elemento2) {
 		
-		return   (   ((EstadoMateria)elemento1).getCodigo() >  ((EstadoMateria)elemento2).getCodigo()  )  ;
+		return   (   ((EstadoMateria)elemento1).getCodigoMateria() >  ((EstadoMateria)elemento2).getCodigoMateria()  )  ;
 	}
 	
 	
@@ -39,6 +39,8 @@ public class HistorialAlumnos extends Lista2DLinkedL{
 	}
 
 	
+	
+	
 	public boolean estaAprobado(int codigo) {
 		
 		EstadoMateria estado = getEstado(codigo); 
@@ -52,4 +54,21 @@ public class HistorialAlumnos extends Lista2DLinkedL{
 		
 		return false;
 	}
+	
+	
+	public boolean estaRegular(int codigo) {
+		
+		EstadoMateria estado = getEstado(codigo); 
+		
+		if(estado != null) {
+			
+			return (estado.getEstado() == EstadoAcademico.REGULAR);
+		}
+		
+		System.out.println("esa materia no pertenece al alumno");
+		
+		return false;
+	}
+	
+	
 }

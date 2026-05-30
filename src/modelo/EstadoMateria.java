@@ -11,7 +11,7 @@ public class EstadoMateria {
 		this.estado = estado;
 	}
 	
-	public int getCodigo() {
+	public int getCodigoMateria() {
 		
 		return this.codigoMateria;
 	}

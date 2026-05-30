@@ -26,4 +26,14 @@ public class Alumno {
 	public String getNombre() {
 		return this.nombre;
 	}
+	
+	public HistorialAlumnos getHistorial(){
+		return this.historial;
+	}
+	
+	public EstadoMateria getEstado(int codigoMateria) {
+		
+		return this.historial.getEstado(codigoMateria);
+	}
+	
 }
