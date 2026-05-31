@@ -71,4 +71,16 @@ public class HistorialAlumnos extends Lista2DLinkedL{
 	}
 	
 	
+	public String toString() {
+		
+		String cadena="";
+		for(int i=0 ; i< tamanio() ; i++) {
+			
+			cadena+= devolver(i).toString();
+			cadena+= "  ";
+		}
+		
+		return cadena;
+	}
+	
 }

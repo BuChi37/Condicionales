@@ -27,5 +27,10 @@ public class EstadoMateria {
 	}
 	
 	
+	public String toString() {
+		
+		return "codigo : "+this.codigoMateria +"  estado : "+ estado;
+		
+	}
 	
 }

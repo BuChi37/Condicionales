@@ -14,7 +14,7 @@ public abstract class AbsGrafo implements OperacionesG{
 		return this.ordenGrafo;
 	}
 	
-	public abstract void cargarGrafo();
+	public abstract void cargarGrafo(String ruta);
 	public abstract void muestraGrafo();
 	
 	private void bpf(ListaDoubleLinkedL listaMarca, int v){

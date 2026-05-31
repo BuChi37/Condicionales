@@ -6,14 +6,20 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import modelo.Alumno;
+import modelo.PlanEstudio;
 
 public class HBoxTopPadre extends HBox{
 	
 	private BorderPane principal;
 	
-	public HBoxTopPadre(BorderPane principal) {
+	private PlanEstudio planEstudio;
+	
+	public HBoxTopPadre(BorderPane principal, PlanEstudio plan) {
 		
 		this.principal = principal;
+		this.planEstudio = plan;
+		
 		mostrar();
 	}
 	

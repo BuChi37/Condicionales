@@ -10,6 +10,9 @@ public class Alumno {
 		
 		this.legajo = legajo;
 		this.nombre = nombre;
+		this.historial = new HistorialAlumnos();
+		
+		
 	}
 	
 	public void agregarEstado(EstadoMateria estado) {
@@ -34,6 +37,15 @@ public class Alumno {
 	public EstadoMateria getEstado(int codigoMateria) {
 		
 		return this.historial.getEstado(codigoMateria);
+	}
+	
+	
+	public String toString() {
+		
+		String cadena="";
+		
+		cadena+= "legajo: "+this.legajo+"  nombre: "+this.nombre+"  Historial: "+this.historial.toString();
+		return cadena;
 	}
 	
 }

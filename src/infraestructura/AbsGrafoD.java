@@ -9,7 +9,7 @@ public abstract class AbsGrafoD extends AbsGrafo implements OperacionesGD{
 		super(ordenGrafo);
 	}
 		
-	public abstract void cargarGrafo();
+	public abstract void cargarGrafo(String ruta);
 	
 	public void muestraDijkstra(int startVertex){
 		double currCost; int w;

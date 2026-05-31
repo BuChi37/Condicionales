@@ -1,5 +1,6 @@
 package modelo;
 
+import carga.Lector;
 import infraestructura.GrafoDirigido;
 import infraestructura.Lista1DLinkedL;
 import infraestructura.ListaDoubleLinkedL;
@@ -7,16 +8,37 @@ import infraestructura.ListaDoubleLinkedL;
 public class PlanEstudio {
 	private GrafoDirigido correlativas;
 	private CatalogoMaterias catMaterias;
-	private Lista1DLinkedL alumnos;
+	private ListaAlumnos alumnos;
 	private RegistroSolicitudes regSolicitudes; //todavia no la use
 	
-	public PlanEstudio() {
+	public PlanEstudio(String ruta) {
+		Lector lector = new Lector();
+		
+		
 	    this.catMaterias = new CatalogoMaterias();
-	    this.alumnos = new ListaDoubleLinkedL();
+	    String rutaCatalogo = ruta;
+	    lector.leerMateria(rutaCatalogo, this.catMaterias);
+	    
+	    
+	    this.alumnos = new ListaAlumnos();
+	    String rutaAlumnos = ruta+"/Alumnos";
+	    lector.leerAlumnos(rutaAlumnos, alumnos);
+	    
+	    
+	    
 	    this.regSolicitudes = new RegistroSolicitudes();
-	    this.correlativas = null; //o this.correlativas = new GrafoDirigido(); si existe constructor vacio
+	    
+	    
+	    this.correlativas = new GrafoDirigido(lector.leerTamanio(ruta) +1);
+	    
+	    this.correlativas.cargarGrafo(ruta);
+	    
+	    
+	    
 	}
 	
+	
+	/*
 	public void inicializarCorrelativas() {
 	    this.correlativas =new GrafoDirigido(this.catMaterias.tamanio());
 	}
@@ -38,6 +60,7 @@ public class PlanEstudio {
 	public void agregarAlumno(Alumno alumno) {
 	    alumnos.insertar(alumno,alumnos.tamanio() );
 	}
+	*/
 	
 	public Alumno buscarAlumno(int legajo) {
 		
@@ -51,13 +74,14 @@ public class PlanEstudio {
 	        if(alumno.getLegajo() == legajo) {
 	            resultado = alumno;
 	        }
+	        
 	        i++;
 	    }
 
 
 	    return resultado;
 	}
-	
+	/*
 	public void agregarCorrelatividad(Materia origen,Materia destino,TipoCondicion tipo) {
 	    int i = catMaterias.obtenerIndice(origen);
 	    int j = catMaterias.obtenerIndice(destino);
@@ -101,6 +125,6 @@ public class PlanEstudio {
 
 	    return resultado;
 	}
-	
+	*/
 	
 }

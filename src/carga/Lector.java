@@ -44,7 +44,7 @@ public class Lector {
 		
 	}
 	
-	private void leerCorrelativa(String ruta, MatrizGrafo matriz) {
+	public void leerCorrelativa(String ruta, MatrizGrafo matriz) {
 		String rutaCorrelativa = ruta + "/TUP.csv";
 		
 		 try(BufferedReader brA= new BufferedReader(new FileReader(rutaCorrelativa) ) ){
@@ -52,7 +52,7 @@ public class Lector {
 	         
 	            
 	            while(  (linea= brA.readLine())!= null ){
-	                  
+	            	
 	                
 	                if(linea.startsWith("\uFEFF")){
 	                    linea = linea.substring(1);
@@ -60,17 +60,22 @@ public class Lector {
 	                String[] datos = linea.split(";");
 	                
 	                
-	                int id = Integer.parseInt(datos[0].trim());
-	                char estadoChar = datos[1].charAt(0);
-	                int idOtra = Integer.parseInt(datos[2].trim());
-	                
-	                int estadoInt = 0;
-	                if(estadoChar == 'R') estadoInt =1;
-	                else estadoInt=2;
-	                
-	                TipoCondicion tipoCondicion = TipoCondicion.values()[estadoInt];
-	                matriz.actualizar(tipoCondicion,idOtra , id);
-	                
+	                if(datos.length == 3) {
+	                	
+	                	int id = Integer.parseInt(datos[0].trim());
+		                char estadoChar = datos[1].charAt(0);
+		                int idOtra = Integer.parseInt(datos[2].trim());
+		                
+		                
+		                
+		                int estadoInt = 0;
+		                if(estadoChar == 'R') estadoInt =1;
+		                else estadoInt=2;
+		                
+		                TipoCondicion tipoCondicion = TipoCondicion.values()[estadoInt];
+		                matriz.actualizar(tipoCondicion,idOtra , id);
+		                
+	                }else System.out.println("error");
 	                
 	               
 	            }
@@ -81,7 +86,7 @@ public class Lector {
 		
 		
 	}
-	private void leerMateria(String ruta, CatalogoMaterias lista) {
+	public void leerMateria(String ruta, CatalogoMaterias lista) {
 		
 		String rutaMateria = ruta +"/Materias.csv";
 		
@@ -107,13 +112,14 @@ public class Lector {
 				
 			}
 			
+			
 		}catch (Exception e) {
 			System.out.println(e);
 		}
 		
 	}
 	
-	private void leerAlumnos(String ruta, ListaAlumnos listaAlumnos){
+	public void leerAlumnos(String ruta, ListaAlumnos listaAlumnos){
         String rutaAlumno= ruta+"/alumnos.csv";
         try(BufferedReader brA= new BufferedReader(new FileReader(rutaAlumno) ) ){
             String linea;
@@ -133,13 +139,14 @@ public class Lector {
                 
                 Alumno alumno = new Alumno(id, nombre);
               
-                String rutaHistorial = ruta+".Historiales"+"/"+id+"H.csv"; 
+                String rutaHistorial = ruta+"/Historiales"+"/"+id+"H.csv"; 
+                
 
                 
                 
                 
                 leerHistorial(rutaHistorial, alumno);
-                
+                System.out.println(alumno.getHistorial().tamanio());
                 listaAlumnos.insertar(alumno);
                
             }
@@ -150,8 +157,8 @@ public class Lector {
     }
 	
 	private void leerHistorial (String ruta, Alumno alumno) {
-		String rutaAlumno= ruta+"/alumnos.csv";
-        try(BufferedReader brA= new BufferedReader(new FileReader(rutaAlumno) ) ){
+		
+        try(BufferedReader brA= new BufferedReader(new FileReader(ruta) ) ){
             String linea;
          
             

@@ -17,7 +17,9 @@ public abstract class Lista2DLinkedL extends Lista0DLinkedL implements Operacion
 			}else{
 				
 				if (esMayor(elemento, this.finalL.getNodoInfo()) || iguales(elemento, this.finalL.getNodoInfo())) {	//insercion al final, si es igual no puede ponerse antes.
-					//Completar!!!
+					NodoDoble nuevoNodo = new NodoDoble(elemento, this.finalL, null);
+					this.finalL.setNextNodo(nuevoNodo);
+					this.finalL = nuevoNodo;
 
 				}else{				
 					// al medio
