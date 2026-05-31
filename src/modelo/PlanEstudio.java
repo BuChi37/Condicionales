@@ -2,7 +2,6 @@ package modelo;
 
 import carga.Lector;
 import infraestructura.GrafoDirigido;
-import infraestructura.Lista1DLinkedL;
 import infraestructura.ListaDoubleLinkedL;
 
 public class PlanEstudio {
