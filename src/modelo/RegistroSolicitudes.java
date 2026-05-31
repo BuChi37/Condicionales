@@ -19,7 +19,7 @@ public class RegistroSolicitudes {
 	}
 	
 	public void agregarSolicitud(SolicitudCondicional solicitud) {
-		    solicitudes.insertar(solicitud, solicitudes.tamanio() );
+		solicitudes.insertar(solicitud, solicitudes.tamanio() );
 	}
 
 	public Lista1DLinkedL obtenerSolicitudes() { //todas
@@ -78,13 +78,31 @@ public class RegistroSolicitudes {
 	}
 
 	public Lista1DLinkedL obtenerRechazadas() {
+		
 		Lista1DLinkedL resultado = new ListaDoubleLinkedL();
 
 	    for(int i = 0; i < solicitudes.tamanio(); i++) {
 
 	        SolicitudCondicional solicitud =(SolicitudCondicional)solicitudes.devolver(i);
 
-	        if(!solicitud.fueAprobada()) {
+	        if(solicitud.fueEvaluada() &&!solicitud.fueAprobada()) {
+
+	            resultado.insertar(solicitud,resultado.tamanio());
+	        }
+	    }
+
+	    return resultado;
+	}
+	
+	public Lista1DLinkedL obtenerPendientes() {
+
+	    Lista1DLinkedL resultado = new ListaDoubleLinkedL();
+
+	    for(int i = 0;i < solicitudes.tamanio();i++) {
+
+	        SolicitudCondicional solicitud =(SolicitudCondicional)solicitudes.devolver(i);
+
+	        if(!solicitud.fueEvaluada()) {
 
 	            resultado.insertar(solicitud,resultado.tamanio());
 	        }
