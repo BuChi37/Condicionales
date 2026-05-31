@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
+import infraestructura.GrafoDirigido;
 import infraestructura.MatrizGrafo;
 import modelo.Alumno;
 import modelo.CatalogoMaterias;
@@ -44,7 +45,7 @@ public class Lector {
 		
 	}
 	
-	public void leerCorrelativa(String ruta, MatrizGrafo matriz) {
+	public void leerCorrelativa(String ruta, GrafoDirigido grafo) {
 		String rutaCorrelativa = ruta + "/TUP.csv";
 		
 		 try(BufferedReader brA= new BufferedReader(new FileReader(rutaCorrelativa) ) ){
@@ -69,11 +70,13 @@ public class Lector {
 		                
 		                
 		                int estadoInt = 0;
+		                
 		                if(estadoChar == 'R') estadoInt =1;
 		                else estadoInt=2;
 		                
-		                TipoCondicion tipoCondicion = TipoCondicion.values()[estadoInt];
-		                matriz.actualizar(tipoCondicion,idOtra , id);
+		                
+		                
+		                grafo.agregarArco(idOtra, id, estadoInt);
 		                
 	                }else System.out.println("error");
 	                

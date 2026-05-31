@@ -28,8 +28,10 @@ public class PlanEstudio {
 	    this.regSolicitudes = new RegistroSolicitudes();
 	    
 	    this.correlativas = new GrafoDirigido(lector.leerTamanio(ruta) +1);
-	    
 	    this.correlativas.cargarGrafo(ruta);
+	    lector.leerCorrelativa(ruta, correlativas);
+	    
+	    
 	    
 	}
 	

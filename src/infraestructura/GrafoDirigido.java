@@ -1,6 +1,6 @@
 package infraestructura;
 
-import carga.Lector;
+
 
 public class GrafoDirigido extends AbsGrafoD{
 	public GrafoDirigido(int ordenGrafo){
@@ -13,11 +13,15 @@ public class GrafoDirigido extends AbsGrafoD{
 	
 	
 	public void cargarGrafo(String ruta){ 
-	
-		Lector lector = new Lector();
+
+		for(int fila = 1; fila < getOrden() ; fila++) {
+			
+			for(int columna =1; columna < getOrden(); columna++) {
+				
+				agregarArco(fila, columna, 0);
+			}
+		}
 		
-		String rutaCorrelativas = ruta;
-		lector.leerCorrelativa(rutaCorrelativas, this.matrizCosto);
 		
 		
 	}

@@ -11,6 +11,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import modelo.Alumno;
 import modelo.PlanEstudio;
 
@@ -66,8 +67,8 @@ public class VBoxPanelAlumnos extends VBox{
 					Alumno alumno = plan.buscarAlumno( legajo);
 					if(alumno != null) {
 						this.alumnoActual=alumno;
-						ScrollPane alumnoPane= ScrollPaneAlumno();
-						getChildren().add(alumnoPane);
+						
+						
 					}
 					
 				}catch (NumberFormatException e) {
@@ -86,23 +87,24 @@ public class VBoxPanelAlumnos extends VBox{
 		return buscador;
 	}
 	
-	public ScrollPane ScrollPaneAlumno() {
-		ScrollPane panel = new ScrollPane();
-		if(this.alumnoActual != null) {
-			
-			HBox alumnos = new HBox();
-			Label legajo = new Label(this.alumnoActual.getLegajo() +""); 
-
-			Label nombre = new Label(this.alumnoActual.getNombre());
-			
-			alumnos.prefWidth(400);
-			alumnos.getChildren().addAll(legajo,nombre);
-			alumnos.setSpacing(20);
-		panel.setContent(alumnos);	
-		}
-		return panel;
+	
+	
+	public VBox crearVBoxAlumnos() {
+		VBox panelVBox = new VBox();
+		
+		
+		HBox alumnoPanel= new HBox();
+		
+		TextField legajo= new TextField();
+		legajo.setText(this.alumnoActual.getLegajo()+"" );
+		
+		TextField nombre=new TextField();
+		nombre.setText(this.alumnoActual.getNombre());
+		
+		alumnoPanel.getChildren().addAll(legajo,nombre);
+		
+		
+		return panelVBox;
 	}
-	
-	
 	
 }
