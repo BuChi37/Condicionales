@@ -54,18 +54,9 @@ public class HBoxTopPadre extends HBox{
 		
 		boton.setOnAction(evenet -> {
 			
-			VBox panel = new VBox();
-			Button hool = new Button("hola");
+			VBox panel = new VBoxPanelAlumnos(planEstudio);
 			
-			panel.setPrefHeight(600);
-			panel.setPrefWidth(600);
 			
-			panel.setMaxWidth(1200);
-			panel.setMaxWidth(900);
-			
-			panel.setMinWidth(600);
-			
-			panel.getChildren().add(hool);
 			this.principal.setCenter(panel);
 			
 		} );

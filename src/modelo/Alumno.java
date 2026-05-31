@@ -40,6 +40,11 @@ public class Alumno {
 	}
 	
 	
+	public boolean equals(Object elemento) {
+		
+		return(   ((Alumno)elemento).getLegajo() == this.legajo );
+		
+	}
 	public String toString() {
 		
 		String cadena="";

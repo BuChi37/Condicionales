@@ -18,5 +18,9 @@ public class Materia {
 	public int getAnio() {		return this.anio;	}
 	
 	
+	public boolean equals(Object elemento) {
+		
+		return (   ((Materia)elemento).getCodigo() == this.codigo);
+	}
 	// no c para que usar el equals por ahora 
 }
