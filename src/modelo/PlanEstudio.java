@@ -25,23 +25,19 @@ public class PlanEstudio {
 	    lector.leerAlumnos(rutaAlumnos, alumnos);
 	    
 	    
-	    
 	    this.regSolicitudes = new RegistroSolicitudes();
-	    
 	    
 	    this.correlativas = new GrafoDirigido(lector.leerTamanio(ruta) +1);
 	    
 	    this.correlativas.cargarGrafo(ruta);
 	    
-	    
-	    
 	}
-	
 	
 	/*
 	public void inicializarCorrelativas() {
 	    this.correlativas =new GrafoDirigido(this.catMaterias.tamanio());
 	}
+	*/
 	
 	public CatalogoMaterias getCatalogoMaterias() {
         return this.catMaterias;
@@ -51,6 +47,7 @@ public class PlanEstudio {
         return this.regSolicitudes;
     }
     
+    /*
 	public void agregarMateria(Materia materia) {
 		if(!catMaterias.existe(materia)) {
 	        catMaterias.insertar(materia);
@@ -78,9 +75,9 @@ public class PlanEstudio {
 	        i++;
 	    }
 
-
 	    return resultado;
 	}
+	
 	/*
 	public void agregarCorrelatividad(Materia origen,Materia destino,TipoCondicion tipo) {
 	    int i = catMaterias.obtenerIndice(origen);
@@ -88,6 +85,7 @@ public class PlanEstudio {
 
 	    correlativas.agregarArco(i,j,tipo);
 	}
+	*/
 	
 	public TipoCondicion obtenerCondicionRequerida( Materia origen,Materia destino) {
 
@@ -105,9 +103,9 @@ public class PlanEstudio {
 	    return correlativas.existeArco(i,j); 
 	}
 	
-	public Lista1DLinkedL obtenerCorrelativasDirectas(Materia materia) {
+	public ListaDoubleLinkedL obtenerCorrelativasDirectas(Materia materia) {
 
-	    Lista1DLinkedL resultado = new ListaDoubleLinkedL();
+	    ListaDoubleLinkedL resultado = new ListaDoubleLinkedL();
 
 	    int destino = catMaterias.obtenerIndice(materia);
 	    
@@ -125,6 +123,6 @@ public class PlanEstudio {
 
 	    return resultado;
 	}
-	*/
+	
 	
 }
