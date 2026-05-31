@@ -93,7 +93,7 @@ public class PlanEstudio {
 	    int i = catMaterias.obtenerIndice(origen);
 	    int j = catMaterias.obtenerIndice(destino);
 
-	    return (TipoCondicion)correlativas.obtenerArco(i,j);
+	    return TipoCondicion.values()[correlativas.obtenerArco(i,j)];
 	}
 	
 	public boolean existeCorrelatividad( Materia origen, Materia destino) {
