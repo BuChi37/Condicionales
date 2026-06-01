@@ -24,7 +24,7 @@ public class HBoxTop extends HBox{
 		this.principal=principal;
 		setAlignment(Pos.CENTER_RIGHT);
 		setStyle("-fx-background-color: #0c062e;");
-		
+		setPadding(new Insets(0,10,0,0));
 		
 		mostrar();
 		

@@ -1,12 +1,25 @@
 package principal;
 
+import GUI.HBoxTop;
+
+import GUI.VBoxBienvenido;
 import javafx.application.Application;
+
+import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import modelo.PlanEstudio;
 
 public class Principal extends Application{
 	
+	PlanEstudio planEstudio ;
+	
 	
 	public void init() {
+		planEstudio =  new PlanEstudio("Datos");
+		
 		
 		
 	}
@@ -15,6 +28,25 @@ public class Principal extends Application{
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
+		
+		BorderPane principal = new BorderPane();
+		principal.setPrefSize(1280, 720);
+		principal.setStyle("-fx-background-color: #0c062e;");
+		
+		HBox topBotones = new HBoxTop(planEstudio, principal);
+		
+		VBox Bienvenido  = new VBoxBienvenido();
+		
+		
+		principal.setTop(topBotones);
+		principal.setCenter(Bienvenido);
+		
+		
+		
+		Scene scene = new Scene(principal);
+		primaryStage.setScene(scene);
+		primaryStage.show();
+		
 		
 		
 	}

@@ -58,7 +58,7 @@ public class BorderPaneAlumno extends BorderPane{
 		panelAlumnoCenter.setStyle("-fx-background-color: #231473;");
 		panelAlumnoCenter.setPadding(new Insets(20));
 		
-		panelAlumnoTop.setStyle("-fx-background-color: #160c47;");
+		panelAlumnoTop.setStyle("-fx-background-color: #231473;");
 		
 		
 		
