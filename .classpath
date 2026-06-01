@@ -5,8 +5,8 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/FX17"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="Datos"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/FX17"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
