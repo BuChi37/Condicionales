@@ -34,8 +34,8 @@ public class GrafoDirigido extends AbsGrafoD{
 		 return matrizCosto.areConnected(origen,destino);
 	}
 	
-	public Object obtenerArco(int origen,int destino) { //metodo agregado
-	    return matrizCosto.devolver( origen,destino);
+	public int obtenerArco(int origen,int destino) { //metodo agregado
+	    return (int)matrizCosto.devolver( origen,destino);
 	}
 	
 }
