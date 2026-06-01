@@ -4,5 +4,18 @@
 	-fx-background-radius: 20px;	
 	-fx-text-fill: white;
 	-fx-pref-width: 160px;
-	-fx-pref-height: 40px;				
+	-fx-pref-height: 40px;		
+	-fx-cursor: hand;		
+	
 }
+
+.btn-Menu:hover{
+	-fx-translate-y: -1px;
+}
+
+
+.bg-Main{
+	
+	-fx-background-color:#121824;
+} 
+

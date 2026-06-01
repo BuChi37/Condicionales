@@ -102,14 +102,7 @@ public class HBoxTop extends HBox{
 	//para esterilizar los botones
 	public void styleButton(Button button) {
 		
-		button.setPrefSize(160,40);
-		button.setStyle(
-				"-fx-border-radius: 20px;"
-				+"-fx-background-radius: 20px;"	
-				+"-fx-text-fill: white;"
-				
-				);
-		button.setCursor(Cursor.HAND);
+		
 		
 		//eventos para cuando el cursor este sobre el botont
 		button.setOnMouseEntered(e -> {

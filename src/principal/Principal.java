@@ -31,6 +31,7 @@ public class Principal extends Application{
 		
 		BorderPane principal = new BorderPane();
 		principal.setPrefSize(1280, 720);
+		principal.getStyleClass().add("bg-Main");
 		
 		
 		HBox topBotones = new HBoxTop(planEstudio, principal);

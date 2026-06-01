@@ -55,10 +55,10 @@ public class BorderPaneAlumno extends BorderPane{
 	
 	public void mostrar() {
 		
-		panelAlumnoCenter.setStyle("-fx-background-color: #231473;");
+		//panelAlumnoCenter.setStyle("-fx-background-color: #231473;");
 		panelAlumnoCenter.setPadding(new Insets(20));
 		
-		panelAlumnoTop.setStyle("-fx-background-color: #231473;");
+		//panelAlumnoTop.setStyle("-fx-background-color: #231473;");
 		panelAlumnoTop.setPadding(new Insets(20));
 		
 		
@@ -251,6 +251,7 @@ public class BorderPaneAlumno extends BorderPane{
 			    ".scroll-bar:vertical .increment-button, .scroll-bar:vertical .decrement-button { -fx-background-color: transparent; -fx-padding: 0; }" +
 			    ".scroll-bar:vertical .increment-arrow, .scroll-bar:vertical .decrement-arrow { -fx-shape: ' '; -fx-padding: 0; }"
 			);
+		
 		scrolPane.setStyle(
 	            "-fx-background: #190d5d; " +          
 	            "-fx-background-color: #190d5d; " +    
