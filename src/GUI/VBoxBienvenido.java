@@ -10,7 +10,8 @@ public class VBoxBienvenido extends VBox{
 	public VBoxBienvenido() {
 		
 		setAlignment(Pos.CENTER);
-		setPrefSize(800, 800);
+		setPrefSize(Double.MAX_VALUE,Double.MAX_VALUE);
+		
 		
 		Image logo = new Image("file:Datos/Fondo.png");
 		

@@ -25,6 +25,7 @@ public class HBoxTopPadre extends HBox{
 	
 	
 	public void mostrar() {
+		this.setStyle("-fx-background-color: #23001e;");
 		setPrefHeight(60);
 		setPrefWidth(Double.MAX_VALUE);
 		
@@ -33,6 +34,7 @@ public class HBoxTopPadre extends HBox{
 		setAlignment(Pos.CENTER_RIGHT);
 		
 		Button boton1 = btnAlumnos();
+		
 		Button boton2 = new Button();
 		StyleButton(boton1);
 		StyleButton(boton2);

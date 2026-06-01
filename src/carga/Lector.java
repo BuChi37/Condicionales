@@ -149,7 +149,7 @@ public class Lector {
                 
                 
                 leerHistorial(rutaHistorial, alumno);
-                System.out.println(alumno.getHistorial().tamanio());
+                
                 listaAlumnos.insertar(alumno);
                
             }
