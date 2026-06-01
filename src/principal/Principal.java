@@ -31,7 +31,7 @@ public class Principal extends Application{
 		
 		BorderPane principal = new BorderPane();
 		principal.setPrefSize(1280, 720);
-		principal.setStyle("-fx-background-color: #0c062e;");
+		
 		
 		HBox topBotones = new HBoxTop(planEstudio, principal);
 		
@@ -42,8 +42,11 @@ public class Principal extends Application{
 		principal.setCenter(Bienvenido);
 		
 		
+		String css = this.getClass().getResource("/GUI/estilos.Css").toExternalForm();
 		
 		Scene scene = new Scene(principal);
+		scene.getStylesheets().add(css);
+		
 		primaryStage.setScene(scene);
 		primaryStage.show();
 		

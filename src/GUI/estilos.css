@@ -1,0 +1,8 @@
+.btn-Menu{
+	
+	-fx-border-radius: 20px;
+	-fx-background-radius: 20px;	
+	-fx-text-fill: white;
+	-fx-pref-width: 160px;
+	-fx-pref-height: 40px;				
+}

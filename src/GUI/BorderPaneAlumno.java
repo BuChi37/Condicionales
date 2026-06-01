@@ -59,7 +59,7 @@ public class BorderPaneAlumno extends BorderPane{
 		panelAlumnoCenter.setPadding(new Insets(20));
 		
 		panelAlumnoTop.setStyle("-fx-background-color: #231473;");
-		
+		panelAlumnoTop.setPadding(new Insets(20));
 		
 		
 		this.HBoxBuscador= new HBox();
@@ -114,6 +114,7 @@ public class BorderPaneAlumno extends BorderPane{
 			try {
 				
 				int legajo= Integer.parseInt(textoIngresado);
+				
 				this.AlumnoActual = plan.buscarAlumno(legajo);
 				
 				if(this.AlumnoActual != null) {

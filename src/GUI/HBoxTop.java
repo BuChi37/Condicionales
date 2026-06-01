@@ -23,7 +23,7 @@ public class HBoxTop extends HBox{
 		this.pla=plan;
 		this.principal=principal;
 		setAlignment(Pos.CENTER_RIGHT);
-		setStyle("-fx-background-color: #0c062e;");
+		
 		setPadding(new Insets(0,10,0,0));
 		
 		mostrar();
@@ -40,18 +40,17 @@ public class HBoxTop extends HBox{
 	
 	public void cargarHBoxBotones() {
 		HBox panelBotones = new HBox();
-		panelBotones.setStyle("-fx-background-color: #0c062e;"+"-fx-border-radius: 0px 0px 0px 20px;"+"-fx-background-radius: 0 0 0 20;");
+		
 		panelBotones.setAlignment(Pos.TOP_RIGHT);
 		panelBotones.setPadding( new Insets(10,0,0,0));
 		panelBotones.setSpacing(20);
 		
 		Button boton1 = new Button();
-		cargarBotonAlumno(boton1)
-		;
+		cargarBotonAlumno(boton1);
 		Button boton2 = new Button();
-		styleButton(boton2);
+		
 		Button boton3 = new Button();
-		styleButton(boton3);
+
 		
 		
 		
@@ -70,7 +69,8 @@ public class HBoxTop extends HBox{
 	
 	public void cargarBotonAlumno(Button boton) {
 		boton.setText("Alumnos");
-		styleButton(boton);
+		boton.getStyleClass().add("btn-Menu");
+		
 		boton.setOnAction(EventLayoutAlumno ->{
 			
 			BorderPane panelAlumnos= new BorderPaneAlumno(pla);
@@ -104,12 +104,10 @@ public class HBoxTop extends HBox{
 		
 		button.setPrefSize(160,40);
 		button.setStyle(
-				"-fx-background-color: #23108b;"
-				+"-fx-border-radius: 20px;"
+				"-fx-border-radius: 20px;"
 				+"-fx-background-radius: 20px;"	
 				+"-fx-text-fill: white;"
-				+"-fx-border-color: #0c062e ;"
-				+"-fx-border-width : 4px"
+				
 				);
 		button.setCursor(Cursor.HAND);
 		
