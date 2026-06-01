@@ -72,7 +72,9 @@ public class HBoxTop extends HBox{
 		styleButton(boton);
 		boton.setOnAction(EventLayoutAlumno ->{
 			
+			BorderPane panelAlumnos= new BorderPaneAlumno(pla);
 			
+			principal.setCenter(panelAlumnos);
 			
 		} );
 		
