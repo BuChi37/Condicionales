@@ -45,7 +45,7 @@ public class BorderPaneAlumno extends BorderPane{
 		
 		setCenter(panelAlumnoCenter);
 		setTop(panelAlumnoTop);
-		this.setPadding(new Insets(20));
+		this.setPadding(new Insets(20,0,0,0));
 		
 		
 		mostrar();
@@ -55,10 +55,10 @@ public class BorderPaneAlumno extends BorderPane{
 	
 	public void mostrar() {
 		
-		panelAlumnoCenter.setStyle("-fx-background-color: #0c062e;");
+		panelAlumnoCenter.setStyle("-fx-background-color: #231473;");
 		panelAlumnoCenter.setPadding(new Insets(20));
 		
-		panelAlumnoTop.setStyle("-fx-background-color: #0c062e;");
+		panelAlumnoTop.setStyle("-fx-background-color: #160c47;");
 		
 		
 		
@@ -151,8 +151,8 @@ public class BorderPaneAlumno extends BorderPane{
 		
 		if(this.AlumnoActual !=null) {
 			
-			Label numLegajo = new Label();	numLegajo.setStyle("-fx-text-fill: white;");
-			Label nombreAlumno = new Label();nombreAlumno.setStyle("-fx-text-fill: white;");
+			Label numLegajo = new Label();	numLegajo.setStyle("-fx-text-fill: white;"+"-fx-font-size: 16px; ");
+			Label nombreAlumno = new Label();nombreAlumno.setStyle("-fx-text-fill: white;"+"-fx-font-size: 16px; ");
 			
 			numLegajo.setText("numero de legajo: "+this.AlumnoActual.getLegajo()); 
 			nombreAlumno.setText("nombre: "+this.AlumnoActual.getNombre());
@@ -168,13 +168,9 @@ public class BorderPaneAlumno extends BorderPane{
 			
 			
 			ScrollPane paneContenedorHisortial = new ScrollPane();
-			paneContenedorHisortial.setStyle(
-		            "-fx-background: #190d5d; " +          
-		            "-fx-background-color: #190d5d; " +    
-		            "-fx-border-color: #190d5d;"           
-		        );
-			paneContenedorHisortial.setFitToWidth(true);
-			paneContenedorHisortial.setMaxHeight(Double.MAX_VALUE);
+			StyleScrollPane(paneContenedorHisortial);
+			
+			
 			
 	        
 	        
@@ -183,6 +179,8 @@ public class BorderPaneAlumno extends BorderPane{
 			
 			paneContenedorHisortial.setContent(VBoxHistorail);
 			VBoxHistorail.setStyle("-fx-background-color: #190d5d;");
+			VBoxHistorail.setSpacing(10);
+			
 			
 			
 			
@@ -196,11 +194,22 @@ public class BorderPaneAlumno extends BorderPane{
 				Label lblEstado	= new Label();	lblEstado.setText(estadoMateria.getEstado().name()); lblEstado.setMinWidth(100);	lblEstado.setStyle("-fx-text-fill: white;");
 				
 				HBox borderPaneMateria = new HBox();
+				StyleHBoxMaterias(borderPaneMateria);
 				
 				borderPaneMateria.setPadding( new Insets(10));
+				
+				
 				if(estadoMateria.getEstado() != EstadoAcademico.NO_CURSADA) {
 					borderPaneMateria.getChildren().addAll(lblId, lblNombre,lblEstado);
 					VBoxHistorail.getChildren().add(borderPaneMateria);
+					
+					if(estadoMateria.getEstado() == EstadoAcademico.APROBADA) {
+						lblEstado.setStyle("-fx-text-fill: #2ecc71;");
+					}
+					if(estadoMateria.getEstado() == EstadoAcademico.REGULAR) {
+						
+						lblEstado.setStyle("-fx-text-fill: #3498db;");
+					}
 				}
 				
 				VBoxHistorail.setAlignment(Pos.TOP_CENTER);
@@ -211,6 +220,47 @@ public class BorderPaneAlumno extends BorderPane{
 			this.panelAlumnoCenter.getChildren().add(alumnoInfo);
 		}
 		
+		
+		
+		
+	}
+	
+	
+
+	public void StyleHBoxMaterias(HBox HBoxmateria) {
+		
+		HBoxmateria.setStyle(
+				
+						"-fx-background-radius: 0 10px 15px 15px; " +
+						"-fx-border-color:  #0c062e; " +
+						"-fx-border-radius:  0 10px 15px 15px; " +
+						"-fx-border-width: 2px;"
+				
+				);
+	}
+	
+	public void StyleScrollPane(ScrollPane scrolPane) {
+		
+		scrolPane.setFitToWidth(true);
+		scrolPane.setMaxHeight(Double.MAX_VALUE);
+		
+		scrolPane.getStylesheets().add("data:text/css," +
+			    ".scroll-bar:vertical .track { -fx-background-color: #0c062e; -fx-background-radius: 5px; }" +
+			    ".scroll-bar:vertical .thumb { -fx-background-color: #23108b; -fx-background-radius: 5px; }" +
+			    ".scroll-bar:vertical .increment-button, .scroll-bar:vertical .decrement-button { -fx-background-color: transparent; -fx-padding: 0; }" +
+			    ".scroll-bar:vertical .increment-arrow, .scroll-bar:vertical .decrement-arrow { -fx-shape: ' '; -fx-padding: 0; }"
+			);
+		scrolPane.setStyle(
+	            "-fx-background: #190d5d; " +          
+	            "-fx-background-color: #190d5d; " +    
+	            "-fx-border-color: #190d5d;" +
+	            
+				"-fx-scrollbar-thumb-color: #3498db; " + 
+				"-fx-scrollbar-track-color: #130947; " +
+				"-fx-scrollbar-radius: 5px;"
+	            
+
+	        );
 		
 	}
 	

@@ -40,9 +40,9 @@ public class HBoxTop extends HBox{
 	
 	public void cargarHBoxBotones() {
 		HBox panelBotones = new HBox();
-		panelBotones.setStyle("-fx-background-color: #190d5d;"+"-fx-border-radius: 0px 0px 0px 20px;"+"-fx-background-radius: 0 0 0 20;");
+		panelBotones.setStyle("-fx-background-color: #0c062e;"+"-fx-border-radius: 0px 0px 0px 20px;"+"-fx-background-radius: 0 0 0 20;");
 		panelBotones.setAlignment(Pos.TOP_RIGHT);
-		panelBotones.setPadding( new Insets(10,10,10,60));
+		panelBotones.setPadding( new Insets(10,0,0,0));
 		panelBotones.setSpacing(20);
 		
 		Button boton1 = new Button();
@@ -67,6 +67,7 @@ public class HBoxTop extends HBox{
 	//crear los botones 
 	
 	//primer boton:
+	
 	public void cargarBotonAlumno(Button boton) {
 		boton.setText("Alumnos");
 		styleButton(boton);
