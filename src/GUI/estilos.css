@@ -6,11 +6,12 @@
 	-fx-pref-width: 160px;
 	-fx-pref-height: 40px;		
 	-fx-cursor: hand;		
-	
+	-fx-transition:all 5s;
 }
 
 .btn-Menu:hover{
 	-fx-translate-y: -1px;
+	
 }
 
 
@@ -18,4 +19,6 @@
 	
 	-fx-background-color:#121824;
 } 
+
+
 
