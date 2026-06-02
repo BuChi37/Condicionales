@@ -47,7 +47,7 @@ public class BorderPaneAlumno extends BorderPane{
 		setTop(panelAlumnoTop);
 		this.setPadding(new Insets(20,0,0,0));
 		
-		getStyleClass().add("bg-Alumno");
+		
 		
 		
 		mostrar();
@@ -57,10 +57,8 @@ public class BorderPaneAlumno extends BorderPane{
 	
 	public void mostrar() {
 		
-		//panelAlumnoCenter.setStyle("-fx-background-color: #231473;");
-		panelAlumnoCenter.setPadding(new Insets(20));
 		
-		//panelAlumnoTop.setStyle("-fx-background-color: #231473;");
+		panelAlumnoCenter.setPadding(new Insets(20));
 		panelAlumnoTop.setPadding(new Insets(20));
 		
 		
@@ -82,15 +80,17 @@ public class BorderPaneAlumno extends BorderPane{
 	
 	
 	public void crearPanelBuscador(HBox panelHBox) {
-		panelHBox.setStyle(	"-fx-background-color: #190d5d;" 
-				+ "-fx-border-radius: 20px 20px 20px 20px;"
-				+"-fx-background-radius: 20 20 20 20;");
+		//panelHBox.setStyle(	"-fx-background-color: #190d5d;" 
+		//		+ "-fx-border-radius: 20px 20px 20px 20px;"
+		//		+"-fx-background-radius: 20 20 20 20;");
 
 		panelHBox.setMaxSize(700, 50);
 		
 		
+		
 		this.txtBuscador  = new TextField();
 		creadorTxtBuscador(txtBuscador);
+		
 		
 		Button btnBuscar = new Button();
 		creadorBtnBuscador(btnBuscar);
@@ -138,7 +138,9 @@ public class BorderPaneAlumno extends BorderPane{
 	}
 	public void creadorTxtBuscador(TextField txtbus) {
 		txtbus.setPrefHeight(Double.MAX_VALUE);
-		txtbus.setStyle("-fx-background-color: transparent; -fx-text-fill: white;");
+		txtbus.setPadding(new Insets( 10,10,10,10));
+		txtbus.getStyleClass().add("TxtField");
+		
 		txtbus.setPromptText("ingresar nuemro de legajo");
 		
 		
@@ -148,9 +150,10 @@ public class BorderPaneAlumno extends BorderPane{
 	public void createBorderPaneAlumno() {
 		BorderPane alumnoInfo = new BorderPane();
 		
-		alumnoInfo.setMaxWidth(600);
+		alumnoInfo.setMaxWidth(800);
 		alumnoInfo.setMaxHeight(Double.MAX_VALUE);
-		alumnoInfo.setStyle("-fx-background-color: #190d5d;");
+		
+		
 		
 		if(this.AlumnoActual !=null) {
 			
@@ -161,7 +164,6 @@ public class BorderPaneAlumno extends BorderPane{
 			nombreAlumno.setText("nombre: "+this.AlumnoActual.getNombre());
 			
 			HBox HBoxnombre = new HBox();
-			HBoxnombre.setStyle("-fx-background-color: #190d5d;");
 			HBoxnombre.setPadding(new Insets(5));
 			HBoxnombre.setSpacing(30);
 			HBoxnombre.setAlignment(Pos.CENTER_LEFT);
@@ -171,7 +173,10 @@ public class BorderPaneAlumno extends BorderPane{
 			
 			
 			ScrollPane paneContenedorHisortial = new ScrollPane();
-			StyleScrollPane(paneContenedorHisortial);
+			paneContenedorHisortial.setFitToWidth(true);
+			paneContenedorHisortial.getStyleClass().add("ScrollPane");
+			
+			
 			
 			
 			
@@ -181,7 +186,7 @@ public class BorderPaneAlumno extends BorderPane{
 			VBox VBoxHistorail = new VBox();
 			
 			paneContenedorHisortial.setContent(VBoxHistorail);
-			VBoxHistorail.setStyle("-fx-background-color: #190d5d;");
+			
 			VBoxHistorail.setSpacing(10);
 			
 			
@@ -197,9 +202,10 @@ public class BorderPaneAlumno extends BorderPane{
 				Label lblEstado	= new Label();	lblEstado.setText(estadoMateria.getEstado().name()); lblEstado.setMinWidth(100);	lblEstado.getStyleClass().add("txt-Secondary");
 				
 				HBox borderPaneMateria = new HBox();
-				StyleHBoxMaterias(borderPaneMateria);
+				
 				
 				borderPaneMateria.setPadding( new Insets(10));
+				
 				
 				
 				if(estadoMateria.getEstado() != EstadoAcademico.NO_CURSADA) {
@@ -216,6 +222,7 @@ public class BorderPaneAlumno extends BorderPane{
 				}
 				
 				VBoxHistorail.setAlignment(Pos.TOP_CENTER);
+				
 				HBox.setHgrow(lblNombre, Priority.ALWAYS);
 			}
 			
@@ -230,40 +237,15 @@ public class BorderPaneAlumno extends BorderPane{
 	
 	
 
-	public void StyleHBoxMaterias(HBox HBoxmateria) {
-		
-		HBoxmateria.setStyle(
-				
-						"-fx-background-radius: 0 10px 15px 15px; " +
-						"-fx-border-color:  #0c062e; " +
-						"-fx-border-radius:  0 10px 15px 15px; " +
-						"-fx-border-width: 2px;"
-				
-				);
-	}
+	
 	
 	public void StyleScrollPane(ScrollPane scrolPane) {
 		
-		scrolPane.setFitToWidth(true);
-		scrolPane.setMaxHeight(Double.MAX_VALUE);
 		
-		scrolPane.getStylesheets().add("data:text/css," +
-			    ".scroll-bar:vertical .track { -fx-background-color: #0c062e; -fx-background-radius: 5px; }" +
-			    ".scroll-bar:vertical .thumb { -fx-background-color: #23108b; -fx-background-radius: 5px; }" +
-			    ".scroll-bar:vertical .increment-button, .scroll-bar:vertical .decrement-button { -fx-background-color: transparent; -fx-padding: 0; }" +
-			    ".scroll-bar:vertical .increment-arrow, .scroll-bar:vertical .decrement-arrow { -fx-shape: ' '; -fx-padding: 0; }"
-			);
 		
-		scrolPane.setStyle(
-	            "-fx-background: #190d5d; " +              
-
-	            
-				"-fx-scrollbar-thumb-color: #3498db; " + 
-				"-fx-scrollbar-track-color: #130947; " +
-				"-fx-scrollbar-radius: 5px;"
-	            
-
-	        );
+		
+		
+		
 		
 	}
 	

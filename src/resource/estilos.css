@@ -30,7 +30,25 @@
 	-fx-text-fill: #E2E8F0;
 }
 
+.ScrollPane{
+	
+	-fx-background: transparent; 
+	-fx-background-color: transparent;
+	-fx-viewport-background: transparent;
+	-fx-max-height: -1;
+	
+}
 
 
-
-
+.TxtField{
+	-fx-text-fill: #E2E8F0;
+	-fx-background-color: transparent;
+	-fx-border-radius: 10px;
+	-fx-border-width: 2px;
+	-fx-border-color: 
+	        linear-gradient(to right, transparent, #E2E8F0, #2C3545) 
+			#2C3545                                                  
+	        linear-gradient(to right, transparent, #E2E8F0, #2C3545) 
+	        #2C3545;
+			
+}
