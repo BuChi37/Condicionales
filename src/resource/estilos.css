@@ -21,6 +21,16 @@
 } 
 
 
+.txt-Secondary{
+	
+	-fx-text-fill: #94A3B8;
+}
+
+.txt-Prymari{
+	-fx-text-fill: #E2E8F0;
+}
+
+
 
 
 

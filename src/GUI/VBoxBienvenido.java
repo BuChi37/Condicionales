@@ -13,14 +13,7 @@ public class VBoxBienvenido extends VBox{
 		setPrefSize(Double.MAX_VALUE,Double.MAX_VALUE);
 		
 		
-		Image logo = new Image("");
 		
-		ImageView vistaImagen = new ImageView(logo);
-		
-		vistaImagen.setFitWidth(800);
-	    vistaImagen.setPreserveRatio(true);
-	    
-	    getChildren().add(vistaImagen);
 	}
 	
 	

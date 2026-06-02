@@ -154,8 +154,8 @@ public class BorderPaneAlumno extends BorderPane{
 		
 		if(this.AlumnoActual !=null) {
 			
-			Label numLegajo = new Label();	numLegajo.setStyle("-fx-text-fill: white;"+"-fx-font-size: 16px; ");
-			Label nombreAlumno = new Label();nombreAlumno.setStyle("-fx-text-fill: white;"+"-fx-font-size: 16px; ");
+			Label numLegajo = new Label();	numLegajo.getStyleClass().add("txt-Prymari");
+			Label nombreAlumno = new Label();nombreAlumno.getStyleClass().add("txt-Prymari");
 			
 			numLegajo.setText("numero de legajo: "+this.AlumnoActual.getLegajo()); 
 			nombreAlumno.setText("nombre: "+this.AlumnoActual.getNombre());
@@ -192,9 +192,9 @@ public class BorderPaneAlumno extends BorderPane{
 				
 				EstadoMateria estadoMateria =(EstadoMateria) historial.devolver(i);
 				Materia materia =(Materia) this.plan.getCatalogoMaterias().getMateria(estadoMateria.getCodigoMateria() ) ;
-				Label lblId = new Label();		lblId.setText(materia.getCodigo()+"");	lblId.setMinWidth(30);	lblId.setStyle("-fx-text-fill: white;");
-				Label lblNombre = new Label();	lblNombre.setText(materia.getNombre()); lblNombre.setMaxWidth(Double.MAX_VALUE);	lblNombre.setStyle("-fx-text-fill: white;");
-				Label lblEstado	= new Label();	lblEstado.setText(estadoMateria.getEstado().name()); lblEstado.setMinWidth(100);	lblEstado.setStyle("-fx-text-fill: white;");
+				Label lblId = new Label();		lblId.setText(materia.getCodigo()+"");	lblId.setMinWidth(30);	lblId.getStyleClass().add("txt-Secondary");
+				Label lblNombre = new Label();	lblNombre.setText(materia.getNombre()); lblNombre.setMaxWidth(Double.MAX_VALUE);	lblNombre.getStyleClass().add("txt-Secondary");
+				Label lblEstado	= new Label();	lblEstado.setText(estadoMateria.getEstado().name()); lblEstado.setMinWidth(100);	lblEstado.getStyleClass().add("txt-Secondary");
 				
 				HBox borderPaneMateria = new HBox();
 				StyleHBoxMaterias(borderPaneMateria);
@@ -255,9 +255,8 @@ public class BorderPaneAlumno extends BorderPane{
 			);
 		
 		scrolPane.setStyle(
-	            "-fx-background: #190d5d; " +          
-	            "-fx-background-color: #190d5d; " +    
-	            "-fx-border-color: #190d5d;" +
+	            "-fx-background: #190d5d; " +              
+
 	            
 				"-fx-scrollbar-thumb-color: #3498db; " + 
 				"-fx-scrollbar-track-color: #130947; " +
