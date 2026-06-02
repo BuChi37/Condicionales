@@ -47,6 +47,8 @@ public class BorderPaneAlumno extends BorderPane{
 		setTop(panelAlumnoTop);
 		this.setPadding(new Insets(20,0,0,0));
 		
+		getStyleClass().add("bg-Alumno");
+		
 		
 		mostrar();
 		

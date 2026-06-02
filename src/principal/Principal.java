@@ -43,7 +43,7 @@ public class Principal extends Application{
 		principal.setCenter(Bienvenido);
 		
 		
-		String css = this.getClass().getResource("/GUI/estilos.Css").toExternalForm();
+		String css = this.getClass().getResource("/resource/estilos.Css").toExternalForm();
 		
 		Scene scene = new Scene(principal);
 		scene.getStylesheets().add(css);
