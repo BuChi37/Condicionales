@@ -1,10 +1,9 @@
 package modelo;
 
-import infraestructura.Lista1DLinkedL;
 import infraestructura.ListaDoubleLinkedL;
 
 public class RegistroSolicitudes {
-	private Lista1DLinkedL solicitudes;
+	private ListaDoubleLinkedL solicitudes;
 	
 	public RegistroSolicitudes() {
 		this.solicitudes = new ListaDoubleLinkedL();
@@ -22,13 +21,13 @@ public class RegistroSolicitudes {
 		solicitudes.insertar(solicitud, solicitudes.tamanio() );
 	}
 
-	public Lista1DLinkedL obtenerSolicitudes() { //todas
+	public ListaDoubleLinkedL obtenerSolicitudes() { //todas
 		return this.solicitudes;
 	}
 
-	public Lista1DLinkedL obtenerSolicitudesAlumno(Alumno alumno) {
+	public ListaDoubleLinkedL obtenerSolicitudesAlumno(Alumno alumno) {
 
-	    Lista1DLinkedL resultado = new ListaDoubleLinkedL();
+	    ListaDoubleLinkedL resultado = new ListaDoubleLinkedL();
 
 	    for(int i = 0; i < solicitudes.tamanio(); i++) {
 
@@ -43,9 +42,9 @@ public class RegistroSolicitudes {
 	    return resultado;
 	}
 	
-	public Lista1DLinkedL obtenerSolicitudesMateria(Materia materia) {
+	public ListaDoubleLinkedL obtenerSolicitudesMateria(Materia materia) {
 
-	    Lista1DLinkedL resultado = new ListaDoubleLinkedL();
+	    ListaDoubleLinkedL resultado = new ListaDoubleLinkedL();
 
 	    for(int i = 0; i < solicitudes.tamanio(); i++) {
 
@@ -60,9 +59,9 @@ public class RegistroSolicitudes {
 	    return resultado;
 	}
 
-	public Lista1DLinkedL obtenerAprobadas() {
+	public ListaDoubleLinkedL obtenerAprobadas() {
 
-	    Lista1DLinkedL resultado = new ListaDoubleLinkedL();
+	    ListaDoubleLinkedL resultado = new ListaDoubleLinkedL();
 
 	    for(int i = 0; i < solicitudes.tamanio(); i++) {
 
@@ -77,9 +76,9 @@ public class RegistroSolicitudes {
 	    return resultado;
 	}
 
-	public Lista1DLinkedL obtenerRechazadas() {
+	public ListaDoubleLinkedL obtenerRechazadas() {
 		
-		Lista1DLinkedL resultado = new ListaDoubleLinkedL();
+		ListaDoubleLinkedL resultado = new ListaDoubleLinkedL();
 
 	    for(int i = 0; i < solicitudes.tamanio(); i++) {
 
@@ -94,9 +93,9 @@ public class RegistroSolicitudes {
 	    return resultado;
 	}
 	
-	public Lista1DLinkedL obtenerPendientes() {
+	public ListaDoubleLinkedL obtenerPendientes() {
 
-	    Lista1DLinkedL resultado = new ListaDoubleLinkedL();
+	    ListaDoubleLinkedL resultado = new ListaDoubleLinkedL();
 
 	    for(int i = 0;i < solicitudes.tamanio();i++) {
 
