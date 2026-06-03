@@ -30,6 +30,7 @@
 	-fx-text-fill: #E2E8F0;
 }
 
+/*SCROLL PANE INICIO */
 .ScrollPane{
 	
 	-fx-background: transparent; 
@@ -39,11 +40,44 @@
 	
 }
 
+.scroll-pane .scroll-bar:vertical {
+    -fx-background-color: #121824; 
+    -fx-width: 50px;  
+	-fx-pref-width: 16px;             
+}
 
-.TxtField{
-	-fx-text-fill: #E2E8F0;
+
+.scroll-pane .scroll-bar:vertical .thumb {
+    
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 0%, #1E2640 0%, rgba(255,255,255,0.4) 100%);
+    -fx-background-radius: 5px;
+}
+
+
+.scroll-pane .scroll-bar:vertical .thumb:hover {
+
+   
+}
+
+
+.scroll-pane .scroll-bar:vertical .increment-button,
+.scroll-pane .scroll-bar:vertical .decrement-button {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+
+.scroll-pane .scroll-bar:vertical .increment-arrow,
+.scroll-pane .scroll-bar:vertical .decrement-arrow {
+    -fx-shape: "";
+    -fx-padding: 0;
+}
+
+/*SCROLL PANE FINAL */
+
+.Hbox-buscador{
+	
 	-fx-background-color: transparent;
-	-fx-border-radius: 10px;
+	-fx-border-radius: 30px;
 	-fx-border-width: 2px;
 	-fx-border-color: 
 	        linear-gradient(to right, transparent, #E2E8F0, #2C3545) 
@@ -52,3 +86,33 @@
 	        #2C3545;
 			
 }
+
+.txtField{
+	-fx-text-fill: #E2E8F0;
+	-fx-background-color: transparent;
+	
+}
+.btnBuscar{
+	-fx-background-color: transparent;
+    -fx-cursor: hand;
+	
+
+	    
+	-fx-background-size: 100% 100%;
+	-fx-mask-size: 70% 70%;
+	
+	
+	-fx-padding: 8px;
+	    
+	-fx-background-image: url("lupaIconoTransparent.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+
+	
+    -fx-background-size: contain; 
+	
+	
+	
+	
+}
+

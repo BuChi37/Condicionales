@@ -15,6 +15,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
@@ -96,7 +98,7 @@ public class BorderPaneAlumno extends BorderPane{
 
 		panelHBox.setMaxSize(700, 50);
 		
-		
+		panelHBox.getStyleClass().add("Hbox-buscador");
 		
 		this.txtBuscador  = new TextField();
 		creadorTxtBuscador(txtBuscador);
@@ -121,8 +123,14 @@ public class BorderPaneAlumno extends BorderPane{
 	
 	
 	public void creadorBtnBuscador(Button btnBus) {
+		
+		btnBus.setMaxHeight(Double.MAX_VALUE);
 		btnBus.setMinWidth(40);
-		btnBus.setPrefHeight(Double.MAX_VALUE);
+		btnBus.setMinHeight(40);
+		btnBus.getStyleClass().add("btnBuscar");
+		
+		
+		
 		
 		btnBus.setOnAction(evento ->{
 			String textoIngresado = this.txtBuscador.getText();
@@ -156,7 +164,7 @@ public class BorderPaneAlumno extends BorderPane{
 	public void creadorTxtBuscador(TextField txtbus) {
 		txtbus.setPrefHeight(Double.MAX_VALUE);
 		txtbus.setPadding(new Insets( 10,10,10,10));
-		txtbus.getStyleClass().add("TxtField");
+		txtbus.getStyleClass().add("txtField");
 		
 		txtbus.setPromptText("ingresar nuemro de legajo");
 		
