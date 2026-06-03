@@ -22,7 +22,7 @@ public abstract class AbsGrafo implements OperacionesG{
 		double currCost;
 		
 		listaMarca.reemplazar(Boolean.TRUE, v);
-		System.out.println("vertice "+ v);
+		
 		for (int w=0;w<getOrden();w++){
 			marcado=(boolean)listaMarca.devolver(w);
 			currCost=(double)this.matrizCosto.devolver(v,w);
@@ -31,7 +31,19 @@ public abstract class AbsGrafo implements OperacionesG{
 			}
 		}
 	}
-	
+	public ListaDoubleLinkedL devolverBFS(int v) {
+		ListaDoubleLinkedL listaMarca;
+		
+		
+		listaMarca = new ListaDoubleLinkedL();
+		for (int m=0;m<getOrden();m++){
+			listaMarca.insertar(false, m);
+		}
+		
+		bpf(listaMarca, v);	
+		
+		return listaMarca;
+	}
 	public void muestraBPF(){
 		ListaDoubleLinkedL listaMarca;
 		boolean marcado;
@@ -56,7 +68,7 @@ public abstract class AbsGrafo implements OperacionesG{
 		int w;
 		
 		listaMarca.reemplazar(true, v);
-		System.out.println("vertice "+ v);
+		//System.out.println("vertice "+ v);
 		cola = new ColaSLinkedList();
 		cola.meter(v);
 		
@@ -65,15 +77,26 @@ public abstract class AbsGrafo implements OperacionesG{
 			for (int z=0;z<getOrden();z++){
 				marcado=(boolean)listaMarca.devolver(z);
 				currCost=(double)this.matrizCosto.devolver(w,z);
-				if (currCost!=infinito && !marcado){
+				if (currCost!=0 && !marcado){
 					listaMarca.reemplazar(true, z);
 					cola.meter(z);
-					System.out.println("arista visitada " + w + " - " + z);
+					//System.out.println("arista visitada " + w + " - " + z);
 				}		
 			}
 		}
 	}
 	
+	public ListaDoubleLinkedL devolverBEA(int v) {
+		ListaDoubleLinkedL listaMarca = new ListaDoubleLinkedL();
+		
+		for (int m=0;m<getOrden();m++){
+			listaMarca.insertar(false, m);
+		}
+		
+		bea(listaMarca, v);	
+		
+		return listaMarca;
+	}
 
 	public void muestraBEA(){
 		ListaDoubleLinkedL listaMarca;

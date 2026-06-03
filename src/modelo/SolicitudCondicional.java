@@ -7,13 +7,15 @@ public class SolicitudCondicional {
 	private Alumno alumno;
 	private Materia materiaSolicitada;
 	private String fecha;
+	private String motivo;
 	private Lista1DLinkedL correlativasDeclaradas;
 	private Dictamen dictamenFinal;
 	
-	public SolicitudCondicional(Alumno alumno, Materia materiaSolicitada, String fecha) {
+	public SolicitudCondicional(Alumno alumno, Materia materiaSolicitada, String fecha, String motivo) {
 	    this.alumno = alumno;
 	    this.materiaSolicitada = materiaSolicitada;
 	    this.fecha = fecha; 
+	    this.motivo = motivo;
 	    
 	    this.dictamenFinal = null;
 	    
@@ -40,6 +42,10 @@ public class SolicitudCondicional {
 	    this.dictamenFinal = dictamen;
 	}
 	
+	public String getMotivo() {
+		return this.motivo;
+	}
+	
 	public void agregarCorrelativaDeclarada(EstadoMateria estadoMateria){
 	    correlativasDeclaradas.insertar(estadoMateria,correlativasDeclaradas.tamanio());
 	}
@@ -57,7 +63,7 @@ public class SolicitudCondicional {
 	    if (!fueEvaluada()) {
 	        return false;
 	    }
-	    return dictamenFinal.fueAprobado();
+	    return dictamenFinal.getEstado().equalsIgnoreCase("Aprobado");
 	}
 	
 	@Override

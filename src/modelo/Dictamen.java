@@ -4,21 +4,21 @@ import infraestructura.Lista1DLinkedL;
 import infraestructura.ListaDoubleLinkedL;
 
 public class Dictamen {
-	private boolean aprobado;
+	private String aprobado;
 	private Lista1DLinkedL resultados;
 	private Lista1DLinkedL motivos;
 	
 	public Dictamen() {
-		this.aprobado = true;
+		this.aprobado = "Aprobado";
         this.resultados = new ListaDoubleLinkedL();
         this.motivos = new ListaDoubleLinkedL();
 	}
 	
-	public void setAprobado(boolean aprobado) { 
+	public void setAprobado(String aprobado) { 
 		this.aprobado=aprobado;
 	}
 	
-	public boolean fueAprobado() {
+	public String getEstado() {
 		return this.aprobado;
 	}
 	
@@ -42,7 +42,7 @@ public class Dictamen {
 		agregarResultado(resultado);
 
 		if(!resultado.cumpleRegla()) {
-		    aprobado = false;
+		    aprobado = "Desaprobado";
 		    agregarMotivo(resultado.getMensaje());
 		}
 	}
