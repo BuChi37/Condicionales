@@ -38,7 +38,11 @@ public class HistorialAlumnos extends Lista2DLinkedL{
 		return null;
 	}
 
-	
+	public void ModificarEstado(EstadoAcademico estado , int codigo) {
+		
+		EstadoMateria estadoMateria = getEstado(codigo);
+		estadoMateria.setEstado(estado);
+	}
 	
 	
 	public boolean estaAprobado(int codigo) {

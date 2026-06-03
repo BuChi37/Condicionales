@@ -4,17 +4,27 @@ package GUI;
 
 
 
+
+
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.ColumnConstraints;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import modelo.Alumno;
 import modelo.EstadoAcademico;
 import modelo.EstadoMateria;
@@ -23,12 +33,14 @@ import modelo.Materia;
 import modelo.PlanEstudio;
 
 public class BorderPaneAlumno extends BorderPane{
-	
+	private  int contracenia= 12345;
 	private PlanEstudio plan;
 	private Alumno AlumnoActual;
 	private TextField txtBuscador;
 	private StackPane panelAlumnoCenter;
 	private StackPane panelAlumnoTop;
+	private Materia materiaActual;
+	private EstadoAcademico nuevoEstadoCambio;
 	
 	private HBox HBoxBuscador;
 	private BorderPane BorderPaneAlumno;
@@ -36,6 +48,7 @@ public class BorderPaneAlumno extends BorderPane{
 	
 	public BorderPaneAlumno(PlanEstudio plan) {
 		
+		this.nuevoEstadoCambio=null;
 		this.plan = plan;
 		this.AlumnoActual= null;
 		
@@ -80,9 +93,6 @@ public class BorderPaneAlumno extends BorderPane{
 	
 	
 	public void crearPanelBuscador(HBox panelHBox) {
-		//panelHBox.setStyle(	"-fx-background-color: #190d5d;" 
-		//		+ "-fx-border-radius: 20px 20px 20px 20px;"
-		//		+"-fx-background-radius: 20 20 20 20;");
 
 		panelHBox.setMaxSize(700, 50);
 		
@@ -106,6 +116,10 @@ public class BorderPaneAlumno extends BorderPane{
 		
 		
 	}
+	
+	
+	
+	
 	public void creadorBtnBuscador(Button btnBus) {
 		btnBus.setMinWidth(40);
 		btnBus.setPrefHeight(Double.MAX_VALUE);
@@ -136,6 +150,9 @@ public class BorderPaneAlumno extends BorderPane{
 			
 		} );
 	}
+	
+	
+	
 	public void creadorTxtBuscador(TextField txtbus) {
 		txtbus.setPrefHeight(Double.MAX_VALUE);
 		txtbus.setPadding(new Insets( 10,10,10,10));
@@ -206,10 +223,13 @@ public class BorderPaneAlumno extends BorderPane{
 				
 				borderPaneMateria.setPadding( new Insets(10));
 				
+				Button btnModificador = new Button();
+				crearBtnModificar(btnModificador,materia);
 				
 				
 				if(estadoMateria.getEstado() != EstadoAcademico.NO_CURSADA) {
-					borderPaneMateria.getChildren().addAll(lblId, lblNombre,lblEstado);
+					
+					borderPaneMateria.getChildren().addAll(lblId, lblNombre,lblEstado,btnModificador);
 					VBoxHistorail.getChildren().add(borderPaneMateria);
 					
 					if(estadoMateria.getEstado() == EstadoAcademico.APROBADA) {
@@ -239,14 +259,144 @@ public class BorderPaneAlumno extends BorderPane{
 
 	
 	
-	public void StyleScrollPane(ScrollPane scrolPane) {
+	public void crearBtnModificar(Button btnModificar,Materia materia) {
 		
+		btnModificar.setMaxHeight(Double.MAX_VALUE);
+		btnModificar.setMinWidth(30);
 		
-		
-		
-		
+		btnModificar.setOnAction(event ->{
+			this.materiaActual=materia;
+			crearStageCofig();
+			
+		} );
 		
 		
 	}
+	
+	//for the stage 2
+	public void crearStageCofig() {
+		
+		Stage ventanaFlotante = new Stage();
+		ventanaFlotante.setTitle("modificarHisotial");
+		
+		StackPane pantallaBloqueo = new StackPane();		pantallaBloqueo.getStyleClass().add("pantalla-bLoqueo");
+		HBox subPantallaBloqueo = new HBox();				subPantallaBloqueo.getStyleClass().add("sub-pantalla-bloqueo");
+		subPantallaBloqueo.setMaxSize(HBox.USE_PREF_SIZE, HBox.USE_PREF_SIZE);
+		
+		
+		Button btnPreguntar = new Button();
+		PasswordField campoContracenia = new PasswordField();
+		subPantallaBloqueo.getChildren().addAll(campoContracenia,btnPreguntar);
+		
+		pantallaBloqueo.getChildren().add(subPantallaBloqueo);
+		
+		btnPreguntar.setOnAction(event -> {
+			
+			if(campoContracenia.getText()!= null ) {
+				
+				try {
+					
+					int contraceniaIngresada= Integer.parseInt(campoContracenia.getText());
+					if(this.contracenia == contraceniaIngresada) {
+						
+						pantallaBloqueo.getChildren().clear();
+						HBox panelZonas = gridPaneModificar();
+						pantallaBloqueo.getChildren().add( panelZonas);
+						
+					}
+					
+				}catch (NumberFormatException e) {
+					System.out.println(e);
+				}
+			}
+		});
+		
+		
+		
+		
+		String css = this.getClass().getResource("/resource/CssAlumno.css").toExternalForm();
+		Scene sceneFlotante = new Scene(pantallaBloqueo,600,400);
+		sceneFlotante.getStylesheets().add(css);
+		ventanaFlotante.setScene(sceneFlotante);
+		ventanaFlotante.initModality(Modality.APPLICATION_MODAL);
+		ventanaFlotante.showAndWait();
+		
+		
+	}
+	
+	
+	public HBox gridPaneModificar() {
+		HBox paneHBox = new HBox();
+		paneHBox.setAlignment(Pos.CENTER);
+		paneHBox.setSpacing(200);
+		
+		VBox datos = new VBox();
+		
+		
+		datos.setAlignment(Pos.TOP_LEFT);
+		paneHBox.getChildren().add(datos);
+		datos.setSpacing(20);
+		
+		
+		
+		Label alumno = new Label();						alumno.getStyleClass().add("txtField");
+		Label materia = new Label();					materia.getStyleClass().add("txtField");
+		Label estadoActual= new Label();				estadoActual.getStyleClass().add("txtField");
+		Label nuevoEstado = new Label();				nuevoEstado.getStyleClass().add("txtField");
+		Button btnAceptar = new Button();
+		
+		
+		ComboBox<EstadoAcademico> comboMaterias = new ComboBox<>();
+		
+		
+		alumno.setText("#"+this.AlumnoActual.getLegajo()+"   nombre: "+this.AlumnoActual.getNombre());
+		materia.setText( this.materiaActual.getCodigo() +"  "+this.materiaActual.getNombre());
+		EstadoMateria  estado = this.AlumnoActual.getEstado(this.materiaActual.getCodigo());
+		estadoActual.setText(  estado.getEstado().name()  );
+		nuevoEstado.setText("sin cambios");
+		
+		
+		
+		comboMaterias.setMinWidth(100);
+		comboMaterias.getItems().addAll(EstadoAcademico.values());
+		comboMaterias.setPromptText("elegir Estado");
+		comboMaterias.setOnAction(event -> {
+		    
+		    this.nuevoEstadoCambio = comboMaterias.getValue();
+		    
+		    if (nuevoEstadoCambio != null) {
+		        
+		        nuevoEstado.setText(nuevoEstadoCambio.name());
+		        
+		       
+		    }
+		});
+		
+		
+		btnAceptar.setOnAction(event ->{
+			
+			if(this.nuevoEstadoCambio != null) {
+				
+				this.AlumnoActual.getHistorial().ModificarEstado(nuevoEstadoCambio, this.materiaActual.getCodigo());
+				
+			}
+			
+			Stage ventana = (Stage) btnAceptar.getScene().getWindow();
+			ventana.close();
+		} );
+		
+		datos.getChildren().addAll(alumno,materia,estadoActual,nuevoEstado,btnAceptar);
+		
+		VBox VBoxComboBox = new VBox();
+		VBoxComboBox.setAlignment(Pos.TOP_CENTER);
+		VBoxComboBox.getChildren().add(comboMaterias);
+		paneHBox.getChildren().add(VBoxComboBox);
+		
+		
+		
+		return paneHBox;
+	}
+	
+	
 	
 }

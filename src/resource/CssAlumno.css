@@ -1,0 +1,22 @@
+.pantalla-bLoqueo{
+	
+
+	-fx-max-width: -1;
+	-fx-max-height: -1;
+	
+}
+
+.grid-pane-flotante{
+	
+	-fx-background : red;
+	-fx-hgap: 15px; 
+	-fx-vgap: 10px;
+	-fx-padding: 20px;
+	
+}
+
+.txtField{
+	
+	-fx-max-width: 200px;
+	    
+}
