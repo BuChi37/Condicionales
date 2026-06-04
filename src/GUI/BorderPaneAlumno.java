@@ -128,12 +128,13 @@ public class BorderPaneAlumno extends BorderPane{
 		btnBus.setMinWidth(40);
 		btnBus.setMinHeight(40);
 		btnBus.getStyleClass().add("btnBuscar");
-		
+		btnBus.setDefaultButton(true);
 		
 		
 		
 		btnBus.setOnAction(evento ->{
 			String textoIngresado = this.txtBuscador.getText();
+			
 			
 			try {
 				
@@ -185,14 +186,16 @@ public class BorderPaneAlumno extends BorderPane{
 			Label numLegajo = new Label();	numLegajo.getStyleClass().add("txt-Prymari");
 			Label nombreAlumno = new Label();nombreAlumno.getStyleClass().add("txt-Prymari");
 			
-			numLegajo.setText("numero de legajo: "+this.AlumnoActual.getLegajo()); 
-			nombreAlumno.setText("nombre: "+this.AlumnoActual.getNombre());
+			numLegajo.setText("# "+this.AlumnoActual.getLegajo()); 
+			nombreAlumno.setText(""+this.AlumnoActual.getNombre());
 			
 			HBox HBoxnombre = new HBox();
 			HBoxnombre.setPadding(new Insets(5));
-			HBoxnombre.setSpacing(30);
+			HBoxnombre.setSpacing(15);
 			HBoxnombre.setAlignment(Pos.CENTER_LEFT);
-			HBoxnombre.getChildren().addAll(numLegajo,nombreAlumno);
+			StackPane imagenContener= new StackPane();
+			imagenContener.getStyleClass().add("stack-pane-user");
+			HBoxnombre.getChildren().addAll(imagenContener,nombreAlumno,numLegajo);
 			
 			alumnoInfo.setTop(HBoxnombre);
 			
@@ -212,16 +215,18 @@ public class BorderPaneAlumno extends BorderPane{
 			
 			paneContenedorHisortial.setContent(VBoxHistorail);
 			
-			VBoxHistorail.setSpacing(10);
+	
 			
 			
 			
 			
 			HistorialAlumnos historial= this.AlumnoActual.getHistorial();
+			Boolean bandera = false;
 			for(int i=0; i < historial.tamanio(); i++) {
 				
 				EstadoMateria estadoMateria =(EstadoMateria) historial.devolver(i);
 				Materia materia =(Materia) this.plan.getCatalogoMaterias().getMateria(estadoMateria.getCodigoMateria() ) ;
+				
 				Label lblId = new Label();		lblId.setText(materia.getCodigo()+"");	lblId.setMinWidth(30);	lblId.getStyleClass().add("txt-Secondary");
 				Label lblNombre = new Label();	lblNombre.setText(materia.getNombre()); lblNombre.setMaxWidth(Double.MAX_VALUE);	lblNombre.getStyleClass().add("txt-Secondary");
 				Label lblEstado	= new Label();	lblEstado.setText(estadoMateria.getEstado().name()); lblEstado.setMinWidth(100);	lblEstado.getStyleClass().add("txt-Secondary");
@@ -229,7 +234,8 @@ public class BorderPaneAlumno extends BorderPane{
 				HBox borderPaneMateria = new HBox();
 				
 				
-				borderPaneMateria.setPadding( new Insets(10));
+				borderPaneMateria.setPadding( new Insets(7));
+				borderPaneMateria.setAlignment(Pos.CENTER_LEFT);
 				
 				Button btnModificador = new Button();
 				crearBtnModificar(btnModificador,materia);
@@ -246,6 +252,13 @@ public class BorderPaneAlumno extends BorderPane{
 					if(estadoMateria.getEstado() == EstadoAcademico.REGULAR) {
 						
 						lblEstado.setStyle("-fx-text-fill: #3498db;");
+					}
+					
+					if(bandera == false) {
+						borderPaneMateria.setStyle("-fx-background-color: #1E2640;"+"-fx-border-radius: 10px;"+"-fx-background-radius: 10px;");
+						bandera =true;
+					}else {
+						bandera = false;
 					}
 				}
 				
@@ -271,7 +284,7 @@ public class BorderPaneAlumno extends BorderPane{
 		
 		btnModificar.setMaxHeight(Double.MAX_VALUE);
 		btnModificar.setMinWidth(30);
-		
+		btnModificar.getStyleClass().add("btn-modificar");
 		btnModificar.setOnAction(event ->{
 			this.materiaActual=materia;
 			crearStageCofig();
@@ -323,7 +336,7 @@ public class BorderPaneAlumno extends BorderPane{
 		
 		
 		String css = this.getClass().getResource("/resource/CssAlumno.css").toExternalForm();
-		Scene sceneFlotante = new Scene(pantallaBloqueo,600,400);
+		Scene sceneFlotante = new Scene(pantallaBloqueo,500,200);
 		sceneFlotante.getStylesheets().add(css);
 		ventanaFlotante.setScene(sceneFlotante);
 		ventanaFlotante.initModality(Modality.APPLICATION_MODAL);
@@ -336,7 +349,7 @@ public class BorderPaneAlumno extends BorderPane{
 	public HBox gridPaneModificar() {
 		HBox paneHBox = new HBox();
 		paneHBox.setAlignment(Pos.CENTER);
-		paneHBox.setSpacing(200);
+		paneHBox.setSpacing(100);
 		
 		VBox datos = new VBox();
 		
@@ -347,11 +360,11 @@ public class BorderPaneAlumno extends BorderPane{
 		
 		
 		
-		Label alumno = new Label();						alumno.getStyleClass().add("txtField");
-		Label materia = new Label();					materia.getStyleClass().add("txtField");
-		Label estadoActual= new Label();				estadoActual.getStyleClass().add("txtField");
-		Label nuevoEstado = new Label();				nuevoEstado.getStyleClass().add("txtField");
-		Button btnAceptar = new Button();
+		Label alumno = new Label();						alumno.getStyleClass().add("label");
+		Label materia = new Label();					materia.getStyleClass().add("label");
+		Label estadoActual= new Label();				estadoActual.getStyleClass().add("label");
+		Label nuevoEstado = new Label();				nuevoEstado.getStyleClass().add("label");
+		Button btnAceptar = new Button("aplicar ");	btnAceptar.getStyleClass().add("btn-aceptar");
 		
 		
 		ComboBox<EstadoAcademico> comboMaterias = new ComboBox<>();

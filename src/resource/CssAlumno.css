@@ -3,20 +3,22 @@
 
 	-fx-max-width: -1;
 	-fx-max-height: -1;
+	-fx-background-color:#121824;
+	-fx-padding: 10px;
 	
 }
 
-.grid-pane-flotante{
-	
-	-fx-background : red;
-	-fx-hgap: 15px; 
-	-fx-vgap: 10px;
-	-fx-padding: 20px;
-	
-}
 
-.txtField{
+
+.label{
 	
 	-fx-max-width: 200px;
-	    
+	-fx-text-fill: white;
 }
+
+.btn-aceptar{
+	
+	-fx-min-width: 100px;
+	-fx-text-fill: white;
+}
+

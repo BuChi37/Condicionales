@@ -28,6 +28,7 @@
 
 .txt-Prymari{
 	-fx-text-fill: #E2E8F0;
+	-fx-font-size: 20px;
 }
 
 /*SCROLL PANE INICIO */
@@ -73,7 +74,6 @@
 }
 
 /*SCROLL PANE FINAL */
-
 .Hbox-buscador{
 	
 	-fx-background-color: transparent;
@@ -115,4 +115,37 @@
 	
 	
 }
+.stack-pane-user{
+	-fx-background-color: transparent;
+	-fx-background-size: 100% 100%;
+	
+	-fx-min-width: 20px;
+	-fx-min-height: 20px;	
+	
+	-fx-background-image: url("userIconTransparente.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
 
+		
+    -fx-background-size: contain; 
+}
+
+.btn-modificar{
+	
+	-fx-background-color: transparent;
+	-fx-background-size: 70% 70%;
+	
+	-fx-min-width: 20px;
+	-fx-min-height: 20px;	
+	
+	-fx-background-image: url("modificarIconTransparent.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+			
+    -fx-background-size: contain; 
+}
+
+.btn-modificar:hover{
+	
+	-fx-background-size: 100% 100%;
+}
