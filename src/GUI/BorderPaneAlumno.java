@@ -370,7 +370,7 @@ public class BorderPaneAlumno extends BorderPane{
 		ComboBox<EstadoAcademico> comboMaterias = new ComboBox<>();
 		
 		
-		alumno.setText("#"+this.AlumnoActual.getLegajo()+"   nombre: "+this.AlumnoActual.getNombre());
+		alumno.setText(this.AlumnoActual.getNombre()+ "   #"+this.AlumnoActual.getLegajo()  );
 		materia.setText( this.materiaActual.getCodigo() +"  "+this.materiaActual.getNombre());
 		EstadoMateria  estado = this.AlumnoActual.getEstado(this.materiaActual.getCodigo());
 		estadoActual.setText(  estado.getEstado().name()  );
