@@ -81,8 +81,8 @@ public class PlanEstudio {
 	
 	/*
 	public void agregarCorrelatividad(Materia origen,Materia destino,TipoCondicion tipo) {
-	    int i = catMaterias.obtenerIndice(origen);
-	    int j = catMaterias.obtenerIndice(destino);
+	    int i = catMaterias.getCodigo(origen);
+	    int j = catMaterias.getCodigo(destino);
 
 	    correlativas.agregarArco(i,j,tipo);
 	}
@@ -90,16 +90,16 @@ public class PlanEstudio {
 	
 	public TipoCondicion obtenerCondicionRequerida( Materia origen,Materia destino) {
 
-	    int i = catMaterias.obtenerIndice(origen);
-	    int j = catMaterias.obtenerIndice(destino);
+	    int i = catMaterias.getCodigo(origen);
+	    int j = catMaterias.getCodigo(destino);
 
 	    return TipoCondicion.values()[correlativas.obtenerArco(i,j)];
 	}
 	
 	public boolean existeCorrelatividad( Materia origen, Materia destino) {
 
-		int i = catMaterias.obtenerIndice(origen);
-		int j = catMaterias.obtenerIndice(destino);
+		int i = catMaterias.getCodigo(origen);
+		int j = catMaterias.getCodigo(destino);
 
 	    return correlativas.existeArco(i,j); 
 	}
@@ -108,7 +108,7 @@ public class PlanEstudio {
 
 	    ListaDoubleLinkedL resultado = new ListaDoubleLinkedL();
 
-	    int destino = catMaterias.obtenerIndice(materia);
+	    int destino = catMaterias.getCodigo(materia);
 	    
 	    if(destino == -1) {
 	        return resultado;
@@ -118,7 +118,7 @@ public class PlanEstudio {
 
 	        if(correlativas.existeArco(origen,destino)) { 
 
-	        	resultado.insertar(catMaterias.obtenerMateria(origen),resultado.tamanio());
+	        	resultado.insertar(catMaterias.getMateria(origen),resultado.tamanio());
 	        }
 	    }
 
@@ -127,7 +127,7 @@ public class PlanEstudio {
 	
 	public ListaDoubleLinkedL obtenerMateriasRelacionadas(Materia materiaOrigen) {
 	    // 1. Traducimos la materia al índice numérico
-	    int ind = catMaterias.obtenerIndice(materiaOrigen);
+	    int ind = catMaterias.getCodigo(materiaOrigen);
 	    
 	    // 2. Ejecutamos el BEA una SOLA vez y retornamos toda la lista de marcas (true/false)
 	    return correlativas.devolverBEA(ind);

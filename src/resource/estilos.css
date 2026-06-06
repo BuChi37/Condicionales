@@ -149,3 +149,37 @@
 	
 	-fx-background-size: 100% 100%;
 }
+
+/*PlanEstudio*/
+
+.TreePlan{
+    -fx-background-color: #121824;
+    -fx-control-inner-background: #121824;
+}
+
+.TreePlan .viewport{
+    -fx-background-color: #121824;
+}
+
+.TreePlan .tree-cell{
+    -fx-background-color: #121824;
+    -fx-text-fill: #E2E8F0;
+}
+
+.TreePlan .tree-cell:selected{
+    -fx-background-color: #1E2640;
+}
+.TreePlan.tree-view {
+    -fx-background-color: #121824;
+    -fx-control-inner-background: #121824;
+    -fx-border-color: transparent;
+}
+
+.ScrollPanePlan { /*sin borde*/
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+}
+
+.ScrollPanePlan > .viewport{
+    -fx-background-color: #121824;
+}

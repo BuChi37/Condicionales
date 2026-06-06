@@ -47,7 +47,9 @@ public class HBoxTop extends HBox{
 		
 		Button boton1 = new Button();
 		cargarBotonAlumno(boton1);
+		
 		Button boton2 = new Button();
+		cargarBotonPlan(boton2);
 		
 		Button boton3 = new Button();
 
@@ -83,7 +85,17 @@ public class HBoxTop extends HBox{
 	
 	//segundo boton
 	public void cargarBotonPlan(Button boton) {
-		
+		 boton.setText("Plan de Estudio");
+		    boton.getStyleClass().add("btn-Menu");
+
+		    boton.setOnAction(event -> {
+
+		    	BorderPanePlanEstudio panelPlan =new BorderPanePlanEstudio(pla);
+
+		        principal.setCenter(panelPlan);
+		        
+
+		    } );
 		
 	}
 	

@@ -13,7 +13,7 @@ public class AnalizadorAcademico {
 		//se utiliza mas que nada para las optativas, si quiero saber todas las materias que debo hacer para poder hacer la correlativa
 		ListaDoubleLinkedL correlativasI= new ListaDoubleLinkedL();
 		Materia materiaEvaluada;
-		int indiceM = plan.getCatalogoMaterias().obtenerIndice(materia);
+		int indiceM = plan.getCatalogoMaterias().getCodigo(materia); //cambio obtenerIndice por getCodigo
 		
 		for (int i = 0; i < indiceM; i++) {
 	        materiaEvaluada = plan.getCatalogoMaterias().getMateria(i);
