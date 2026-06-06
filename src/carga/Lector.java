@@ -108,8 +108,9 @@ public class Lector {
 				int codigoMateria  = Integer.parseInt(datos[0].trim());
 				String nombre = datos[1];
 				int anio = Integer.parseInt(datos[2].trim());
+				int cuatrimestre = Integer.parseInt(datos[3].trim());
 				
-				Materia materia = new Materia(codigoMateria, nombre, anio);
+				Materia materia = new Materia(codigoMateria, nombre, anio,cuatrimestre);
 				
 				lista.AgregarMateria( materia);
 				
