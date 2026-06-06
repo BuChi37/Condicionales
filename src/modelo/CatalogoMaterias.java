@@ -38,7 +38,7 @@ public class CatalogoMaterias extends Lista2DLinkedL{
 	
 	public Materia getMateria(int codigo) {
 		
-		Materia  materia = new Materia( codigo, " ", 0,"");
+		Materia  materia = new Materia( codigo, " ", 0,0);
 		
 		int pos = buscar(materia);
 		

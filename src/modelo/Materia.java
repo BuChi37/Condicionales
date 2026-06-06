@@ -4,10 +4,10 @@ public class Materia {
 	private int codigo;
 	private String nombre;
 	private int anio;
-	private String cuatrimestre;
+	private int cuatrimestre;
 	
 	
-	public Materia(int codigo, String nombre, int anio, String cuatrimestre ) {
+	public Materia(int codigo, String nombre, int anio, int cuatrimestre ) {
 		
 		this.codigo = codigo;
 		this.nombre = nombre;
@@ -19,7 +19,7 @@ public class Materia {
 	public int getCodigo() {	return this.codigo;	}
 	public String getNombre() {	return this.nombre;	}
 	public int getAnio() {		return this.anio;	}
-	public String getCuatrimestre() {	return this.cuatrimestre;	}
+	public int getCuatrimestre() {	return this.cuatrimestre;	}
 	
 	public boolean equals(Object elemento) {
 		
