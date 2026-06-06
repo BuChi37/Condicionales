@@ -19,12 +19,13 @@ public class Principal extends Application{
 	
 	PlanEstudio planEstudio ;
 	
-	/*
 	public void init() {
 		planEstudio =  new PlanEstudio("Datos");
 		
-	}*/
-	 
+	}
+	
+	
+	/*
 	//prueba vista PlanEstudio:
 	@Override
 	public void init() {
@@ -45,7 +46,7 @@ public class Principal extends Application{
 
 	        System.out.println("Correlativa: " + m.getNombre());
 	    }
-	}
+	}*/
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {

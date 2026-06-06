@@ -23,7 +23,7 @@ public class VBoxPlanEstudio extends VBox {
         setAlignment(Pos.TOP_LEFT);
         setFillWidth(true);
         
-        TreeItem<String> raiz =new TreeItem<>("Plan de Estudios");
+        TreeItem<String> raiz =new TreeItem<>("TECNICATURA UNIVERSITARIA EN PROGRAMACION - Plan de estudios 2012");
 
         CatalogoMaterias catalogo =plan.getCatalogoMaterias();
         
@@ -42,13 +42,25 @@ public class VBoxPlanEstudio extends VBox {
 
             Materia materia =(Materia) catalogo.devolver(i); 
             
-            TreeItem<String> nodoMateria =new TreeItem<>(materia.getNombre());
+            String text="";
             
-            if(materia.getAnio()==1) uno.getChildren().add(nodoMateria);
-            if(materia.getAnio()==2) dos.getChildren().add(nodoMateria);
-            if(materia.getAnio()==3) tres.getChildren().add(nodoMateria);
+            switch(materia.getCuatrimestre()) {
+            case 1: text= "1C - "+materia.getNombre(); break;
+            case 2: text= "2C - "+materia.getNombre(); break;
+            case 3: text= "A - "+materia.getNombre(); break;
+            case 10: text= "Opt. 1C - "+materia.getNombre(); break;
+            case 20: text= "Opt. 2C - "+materia.getNombre(); break;
+            }
             
-            //raiz.getChildren().add(nodoMateria);
+           
+            TreeItem<String> nodoMateria =new TreeItem<>(text);
+            
+            switch(materia.getAnio()) {
+            case 1: uno.getChildren().add(nodoMateria); break;
+            case 2: dos.getChildren().add(nodoMateria); break;
+            case 3: tres.getChildren().add(nodoMateria); break;
+            }
+            
             
             TreeItem<String> requiere = new TreeItem<>("Requiere: ");
             
@@ -70,7 +82,7 @@ public class VBoxPlanEstudio extends VBox {
 
                 if(condicion == TipoCondicion.APROBADO) tipo = "Aprobada";
 
-                String texto =correlativa.getNombre().substring(4)+ " (" + tipo + ")";
+                String texto =correlativa.getNombre()+ " (" + tipo + ")";
                     
                 requiere.getChildren().add( new TreeItem<>(texto));
                
