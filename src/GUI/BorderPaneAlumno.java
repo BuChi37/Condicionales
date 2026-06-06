@@ -419,5 +419,31 @@ public class BorderPaneAlumno extends BorderPane{
 	}
 	
 	
+	public void asignarColorLabel(Label label, EstadoAcademico estado ) {
+		if(estado == EstadoAcademico.NO_CURSADA) {
+			
+			
+		}
+		
+		if(estado == EstadoAcademico.CURSANDO) {
+			
+		}
+		
+		if(estado == EstadoAcademico.CURSANDO) {
+			
+			
+		}
+		if(estado == EstadoAcademico.APROBADA) {
+			
+		}
+		
+		if(estado == EstadoAcademico.DESAPROBADA) {
+			
+		}
+		
+		if(estado== EstadoAcademico.LIBRE) {
+			
+		}
+	}
 	
 }
