@@ -27,6 +27,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import modelo.Alumno;
 import modelo.EstadoAcademico;
 import modelo.EstadoMateria;
@@ -298,6 +299,8 @@ public class BorderPaneAlumno extends BorderPane{
 	public void crearStageCofig() {
 		
 		Stage ventanaFlotante = new Stage();
+		ventanaFlotante.initStyle(StageStyle.UNDECORATED);
+		ventanaFlotante.setResizable(false);
 		ventanaFlotante.setTitle("modificarHisotial");
 		
 		StackPane pantallaBloqueo = new StackPane();		pantallaBloqueo.getStyleClass().add("pantalla-bLoqueo");
@@ -306,11 +309,13 @@ public class BorderPaneAlumno extends BorderPane{
 		
 		
 		Button btnPreguntar = new Button();
+		Button btnDevolver = new Button();
 		PasswordField campoContracenia = new PasswordField();
-		subPantallaBloqueo.getChildren().addAll(campoContracenia,btnPreguntar);
+		subPantallaBloqueo.getChildren().addAll(btnDevolver,campoContracenia,btnPreguntar);
 		
 		pantallaBloqueo.getChildren().add(subPantallaBloqueo);
 		
+		//btnDevolver.setOnAction(evento -> );
 		btnPreguntar.setOnAction(event -> {
 			
 			if(campoContracenia.getText()!= null ) {

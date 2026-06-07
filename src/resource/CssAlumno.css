@@ -6,6 +6,10 @@
 	-fx-background-color:#121824;
 	-fx-padding: 10px;
 	
+	-fx-border-color: #E2E8F0;
+	-fx-border-width: 5px;
+
+
 }
 
 
@@ -21,4 +25,8 @@
 	-fx-min-width: 100px;
 	-fx-text-fill: white;
 }
-
+.modificarHisotial{
+	
+	-fx-padding: 10px;
+	
+}

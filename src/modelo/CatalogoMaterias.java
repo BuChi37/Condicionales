@@ -27,11 +27,7 @@ public class CatalogoMaterias extends Lista2DLinkedL{
 		
 		return buscar(materia)+1; //mas 1 para correspondencia con los indices de la matriz
 	}
-/*
-	public Materia obtenerMateria(int indice) { //podriamos eliminar
-		return (Materia) devolver(indice);
-	}
-*/
+
 	public boolean existe(Materia materia) {
 		return buscar(materia) != -1;
 	}
