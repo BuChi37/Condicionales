@@ -88,6 +88,7 @@ public class HBoxTop extends HBox{
 		 boton.setText("Plan de Estudio");
 		    boton.getStyleClass().add("btn-Menu");
 
+		    /*
 		    boton.setOnAction(event -> {
 
 		    	BorderPanePlanEstudio panelPlan =new BorderPanePlanEstudio(pla);
@@ -95,7 +96,16 @@ public class HBoxTop extends HBox{
 		        principal.setCenter(panelPlan);
 		        
 
-		    } );
+		    } ); */
+		    
+		    //prueba nueva interfaz:
+		    boton.setOnAction(event -> {
+
+		        VBoxPlanEstudioCards vista =new VBoxPlanEstudioCards(pla);
+
+		        principal.setCenter(vista);
+
+		    });
 		
 	}
 	

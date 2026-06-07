@@ -183,3 +183,110 @@
 .ScrollPanePlan > .viewport{
     -fx-background-color: #121824;
 }
+ /*PlanEstudio version 2*/
+ .titulo-plan{
+
+     -fx-font-size: 20px;
+     -fx-font-weight: bold;
+
+     -fx-text-fill: white;
+
+     -fx-background-color: #1E2640;
+
+     -fx-background-radius: 10px;
+
+     -fx-padding: 15px;
+
+     -fx-alignment: center;
+	 -fx-max-width: infinity;
+ }
+ .titulo-anio{
+
+     -fx-font-size: 18px;
+     -fx-font-weight: bold;
+
+     -fx-text-fill: white;
+
+     -fx-background-color: #201c57;
+
+     -fx-background-radius: 10px;
+
+     -fx-padding: 10px;
+
+     -fx-alignment: center;
+ }
+ .panel-materia{
+
+     -fx-background-color: #465779;
+
+     -fx-background-radius: 10px;
+
+     -fx-padding: 4px 10px 4px 10px;
+ }
+ .materia{
+
+     -fx-text-fill: white;
+
+     -fx-font-size: 18px;
+
+     /*-fx-font-weight: bold;*/
+ }
+ .btn-requisitos{
+
+     -fx-background-color: #191970;
+
+     -fx-text-fill: white;
+
+     -fx-font-size: 13px;
+
+     -fx-font-weight: bold;
+
+     -fx-background-radius: 8px;
+
+     -fx-cursor: hand;
+ }
+ .btn-requisitos:hover{
+
+     -fx-background-color: #4D86B8;
+ }
+ .panel-requisitos{
+
+     -fx-background-color: #121824;
+
+     -fx-background-radius: 8px;
+
+     -fx-border-color: #3F6F97;
+
+     -fx-border-radius: 8px;
+
+     -fx-padding: 5px;
+ }
+ .texto-requisito{
+
+     -fx-text-fill: white;
+
+     -fx-font-size: 16px;
+	 
+ }
+ .ScrollPanePlan{
+     -fx-background: #121824;
+     -fx-background-color: #121824;
+     -fx-background-insets: 0;
+     -fx-padding: 0;
+ }
+
+ .ScrollPanePlan > .viewport{
+     -fx-background-color: #121824;
+ }
+
+ .ScrollPanePlan .corner{
+     -fx-background-color: #121824;
+ }
+ 
+ .scroll-pane{
+     -fx-border-width: 0;
+     -fx-background-insets: 0;
+ }
+ .panel-materia{
+     -fx-max-width: infinity;
+ }

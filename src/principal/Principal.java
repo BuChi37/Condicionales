@@ -47,6 +47,8 @@ public class Principal extends Application{
 	        System.out.println("Correlativa: " + m.getNombre());
 	    }
 	}*/
+	
+	
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
