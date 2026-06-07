@@ -23,8 +23,9 @@ public class CatalogoMaterias extends Lista2DLinkedL{
 		return ((Materia)elemento1).getCodigo() > ((Materia)elemento2).getCodigo();
 	}
 	
-	public int getCodigo(Materia materia) { //getCodigo
-		return buscar(materia)+1;
+	public int obtenerIndice(Materia materia) { //getCodigo
+		
+		return buscar(materia)+1; //mas 1 para correspondencia con los indices de la matriz
 	}
 /*
 	public Materia obtenerMateria(int indice) { //podriamos eliminar

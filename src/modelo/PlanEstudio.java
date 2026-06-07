@@ -81,8 +81,8 @@ public class PlanEstudio {
 	
 	/*
 	public void agregarCorrelatividad(Materia origen,Materia destino,TipoCondicion tipo) {
-	    int i = catMaterias.getCodigo(origen);
-	    int j = catMaterias.getCodigo(destino);
+	    int i = catMaterias.obtenerIndice(origen);
+	    int j = catMaterias.obtenerIndice(destino);
 
 	    correlativas.agregarArco(i,j,tipo);
 	}
@@ -90,16 +90,16 @@ public class PlanEstudio {
 	
 	public TipoCondicion obtenerCondicionRequerida( Materia origen,Materia destino) {
 
-	    int i = catMaterias.getCodigo(origen);
-	    int j = catMaterias.getCodigo(destino);
+	    int i = catMaterias.obtenerIndice(origen);
+	    int j = catMaterias.obtenerIndice(destino);
 
 	    return TipoCondicion.values()[correlativas.obtenerArco(i,j)];
 	}
 	
 	public boolean existeCorrelatividad( Materia origen, Materia destino) {
 
-		int i = catMaterias.getCodigo(origen);
-		int j = catMaterias.getCodigo(destino);
+		int i = catMaterias.obtenerIndice(origen);
+		int j = catMaterias.obtenerIndice(destino);
 
 	    return correlativas.existeArco(i,j); 
 	}
@@ -108,7 +108,7 @@ public class PlanEstudio {
 
 	    ListaDoubleLinkedL resultado = new ListaDoubleLinkedL();
 
-	    int destino = catMaterias.getCodigo(materia);
+	    int destino = catMaterias.obtenerIndice(materia);
 	    
 	    if(destino == -1) {
 	        return resultado;
@@ -127,7 +127,7 @@ public class PlanEstudio {
 	
 	public ListaDoubleLinkedL obtenerMateriasRelacionadas(Materia materiaOrigen) {
 	    // 1. Traducimos la materia al índice numérico
-	    int ind = catMaterias.getCodigo(materiaOrigen);
+	    int ind = catMaterias.obtenerIndice(materiaOrigen);
 	    
 	    // 2. Ejecutamos el BEA una SOLA vez y retornamos toda la lista de marcas (true/false)
 	    return correlativas.devolverBEA(ind);
