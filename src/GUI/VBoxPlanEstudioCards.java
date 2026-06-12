@@ -21,7 +21,7 @@ public class VBoxPlanEstudioCards extends VBox {
         
         contenido.setStyle("-fx-background-color: #121824;");
 
-        Label titulo = new Label("TECNICATURA UNIVERSITARIA EN PROGRAMACIÓN");
+        Label titulo = new Label("TECNICATURA UNIVERSITARIA EN PROGRAMACIÓN - Plan de Estudio 2012");
 
         titulo.getStyleClass().add("titulo-plan");
         titulo.setMaxWidth(Double.MAX_VALUE);

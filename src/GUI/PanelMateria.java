@@ -37,7 +37,7 @@ public class PanelMateria extends VBox {
         fila.getChildren().add(nombre);
         
 
-        Button btn =new Button("[Requisitos]");
+        Button btn =new Button("Requisitos");
 
         btn.getStyleClass().add("btn-requisitos");
         
@@ -90,9 +90,9 @@ public class PanelMateria extends VBox {
                 requisitos.setManaged(!visible);
                 
                 if(visible)
-                    btn.setText("[Requisitos]");
+                    btn.setText("Requisitos");
                 else
-                    btn.setText("[Ocultar]");
+                    btn.setText("Ocultar");
 
             });
 
