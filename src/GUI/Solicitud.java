@@ -1,7 +1,10 @@
 package GUI;
 
+
+import carga.Escritor;
 import infraestructura.ListaDoubleLinkedL;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
@@ -50,9 +53,13 @@ public class Solicitud extends BorderPane{
 		this.dictamen=new Label("Solicitud "+solicitud.getEstado());
 		this.dictamen.getStyleClass().add("badge-estado-detalle");
 		
+		
+		
+		
 		VBox contenedor=new VBox();
 		contenedor.getChildren().addAll(titulo,nombre,nroLegajo,fecha,materia,motivo,dictamen);
-
+		Button botonImprimir= btnImprimir(contenedor);
+		
         contenedor.setId("detalle-solicitud-root");
 		
 		ListaDoubleLinkedL dictamenR=(ListaDoubleLinkedL) solicitud.getDictamenFinal().obtenerResultados();
@@ -79,6 +86,31 @@ public class Solicitud extends BorderPane{
 		
 		
 		panelSoli.setCenter(contenedor);
+		panelSoli.setBottom(botonImprimir);
 		return panelSoli;
+	}
+	
+	
+	private Button btnImprimir(VBox nodoAImprimir) {
+		Button btn = new Button("Imprimir Solicitud");
+		
+		
+		btn.setOnAction(event -> {
+			
+			Escritor escritor = new Escritor();
+			
+			Stage ventanaPadre = (Stage) btn.getScene().getWindow();
+			
+			
+			btn.setVisible(false);
+			
+			
+			escritor.imprimirComponente(nodoAImprimir, ventanaPadre);
+			
+			
+			btn.setVisible(true);
+		});
+		
+		return btn;
 	}
 }
