@@ -18,7 +18,7 @@ import modelo.Materia;
 import modelo.PlanEstudio;
 import modelo.RegistroSolicitudes;
 import modelo.SolicitudCondicional;
-import servivios.AnalizadorAcademico;
+import servicios.AnalizadorAcademico;
 
 public class BorderPaneSolicitud extends BorderPane {
 	private AnalizadorAcademico analizador;

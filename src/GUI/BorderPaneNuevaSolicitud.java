@@ -21,7 +21,7 @@ import modelo.Materia;
 import modelo.PlanEstudio;
 import modelo.RegistroSolicitudes;
 import modelo.SolicitudCondicional;
-import servivios.MotorCondicionalidad;
+import servicios.MotorCondicionalidad;
 
 public class BorderPaneNuevaSolicitud extends BorderPane{
 	private SolicitudCondicional soli;
