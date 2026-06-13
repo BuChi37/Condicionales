@@ -23,7 +23,10 @@ public class Materia {
 	
 	public boolean equals(Object elemento) {
 		
-		return (   ((Materia)elemento).getCodigo() == this.codigo);
+		return (((Materia)elemento).getCodigo() == this.codigo);
 	}
 	// no c para que usar el equals por ahora 
+	public boolean esIgual(String nombre) {
+		return this.getNombre().equalsIgnoreCase(nombre);
+	}
 }

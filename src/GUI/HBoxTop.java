@@ -52,7 +52,7 @@ public class HBoxTop extends HBox{
 		cargarBotonPlan(boton2);
 		
 		Button boton3 = new Button();
-
+		cargarBotonSoli(boton3);
 		
 		
 		
@@ -112,7 +112,16 @@ public class HBoxTop extends HBox{
 	
 	//tercer boton
 	public void cargarBotonSoli(Button boton) {
+		boton.setText("Solicitudes");
+		boton.getStyleClass().add("btn-Menu");
 		
+		boton.setOnAction(EventLayoutSoli->{
+			
+			BorderPane panelSoli= new BorderPaneSolicitud(pla);
+			
+			principal.setCenter(panelSoli);
+			
+		} );
 		
 	}
 		

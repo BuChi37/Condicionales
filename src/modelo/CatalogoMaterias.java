@@ -31,7 +31,16 @@ public class CatalogoMaterias extends Lista2DLinkedL{
 	public boolean existe(Materia materia) {
 		return buscar(materia) != -1;
 	}
-
+	
+	public Materia devolverMateria(String nombre) {
+		Materia m=new Materia(0, nombre, 0);
+		for(int i=0;i<super.tamanio();i++) {
+			if(obtenerMateria(i).esIgual(nombre)) {
+				m=obtenerMateria(i);
+			}
+		}
+		return m;
+	}
 	
 	public Materia getMateria(int codigo) { //obtiene materia por codigo
 		

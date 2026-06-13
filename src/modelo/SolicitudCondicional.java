@@ -65,7 +65,9 @@ public class SolicitudCondicional {
 	    }
 	    return dictamenFinal.getEstado().equalsIgnoreCase("Aprobado");
 	}
-	
+	public String getEstado() {
+		return dictamenFinal.getEstado();
+	}
 	@Override
 	public String toString() {
 	    return "SolicitudCondicional [alumno="+ alumno +", materiaSolicitada="+ materiaSolicitada +

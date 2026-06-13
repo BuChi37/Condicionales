@@ -42,7 +42,7 @@ public class Dictamen {
 		agregarResultado(resultado);
 
 		if(!resultado.cumpleRegla()) {
-		    aprobado = "Desaprobado";
+		    aprobado = "Rechazado";
 		    agregarMotivo(resultado.getMensaje());
 		}
 	}

@@ -6,11 +6,11 @@ import modelo.SolicitudCondicional;
 
 public class ReglaMotivos implements ReglaAcademica{
 	public ResultadoRegla evaluar(SolicitudCondicional soli, PlanEstudio plan) {
-		boolean cumple=true;
+		boolean cumple=false;
 		if(soli.getMotivo().equalsIgnoreCase("salud") || soli.getMotivo().equalsIgnoreCase("trabajo")) {
-			cumple=false;
+			cumple=true;
 		}
 
-		return new ResultadoRegla(cumple, soli.getMotivo());
+		return new ResultadoRegla(cumple, "Motivo: "+soli.getMotivo());
 	}
 }

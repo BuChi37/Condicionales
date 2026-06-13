@@ -30,25 +30,27 @@ public class MotorCondicionalidad {
 	public Dictamen evaluarSolicitud(Alumno alumno, SolicitudCondicional solicitud){
 		Dictamen dictamen=new Dictamen();
 		ResultadoRegla resul;
-		boolean tieneExcepcion=false;
+		boolean tieneExcepcion=false,acep=true;
 		
 		for (int i=0; i<reglas.tamanio();i++) {
 			
 			resul=((ReglaAcademica)reglas.devolver(i)).evaluar(solicitud, plan);
 				
-			if(!resul.cumpleRegla()) {
-				if(resul.getMensaje().equalsIgnoreCase("salud") || resul.getMensaje().equalsIgnoreCase("trabajo")) {
+			if(resul.cumpleRegla()) {
+				if(resul.getMensaje().toLowerCase().contains("salud") || resul.getMensaje().toLowerCase().contains("trabajo")) {
 					tieneExcepcion=true;
 					dictamen.agregarMotivo(resul.getMensaje());
-				}else {
-					dictamen.setAprobado("Desaprobado");
-					dictamen.agregarMotivo(resul.getMensaje());
+					
 				}
+			}else if(!resul.getMensaje().toLowerCase().contains("otro")){
+				dictamen.setAprobado("Rechazado");
+				dictamen.agregarMotivo(resul.getMensaje());
+				acep=false;
 			}
 			dictamen.agregarResultado(resul);
 		}
 		
-		if (tieneExcepcion) {
+		if (tieneExcepcion && !acep) {
 	        dictamen.setAprobado("Pendiente");
 	    }else if(dictamen.getEstado().equalsIgnoreCase("Aprobado")) {
 			dictamen.agregarMotivo("Alumno aprobado porque cumplio con todos los requerimientos minimos para ser un alumno condicional");

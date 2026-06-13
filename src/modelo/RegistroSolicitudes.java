@@ -8,7 +8,9 @@ public class RegistroSolicitudes {
 	public RegistroSolicitudes() {
 		this.solicitudes = new ListaDoubleLinkedL();
 	}
-	
+	public RegistroSolicitudes(ListaDoubleLinkedL reg) {
+		this.solicitudes = reg;
+	}
 	public boolean estaVacio() {
 	    return solicitudes.tamanio() == 0;
 	}
@@ -84,7 +86,7 @@ public class RegistroSolicitudes {
 
 	        SolicitudCondicional solicitud =(SolicitudCondicional)solicitudes.devolver(i);
 
-	        if(solicitud.fueEvaluada() &&!solicitud.fueAprobada()) {
+	        if(solicitud.fueEvaluada() && solicitud.getEstado().equalsIgnoreCase("Rechazado")) {
 
 	            resultado.insertar(solicitud,resultado.tamanio());
 	        }
@@ -101,7 +103,7 @@ public class RegistroSolicitudes {
 
 	        SolicitudCondicional solicitud =(SolicitudCondicional)solicitudes.devolver(i);
 
-	        if(!solicitud.fueEvaluada()) {
+	        if(solicitud.fueEvaluada() && solicitud.getEstado().equalsIgnoreCase("pendiente")) {
 
 	            resultado.insertar(solicitud,resultado.tamanio());
 	        }
