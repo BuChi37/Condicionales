@@ -18,7 +18,7 @@ import modelo.Materia;
 import modelo.PlanEstudio;
 import modelo.RegistroSolicitudes;
 import modelo.SolicitudCondicional;
-import servivios.AnalizadorAcademico;
+import servicios.AnalizadorAcademico;
 
 public class BorderPaneSolicitud extends BorderPane {
 	private AnalizadorAcademico analizador;
@@ -53,10 +53,9 @@ public class BorderPaneSolicitud extends BorderPane {
 		
 		crearPanelScroll(plan.getRegistroSolicitudes());
 		
-		
-		
-		
 	}
+	
+	
 	public void crearPanelFiltro(PlanEstudio plan) {
 		
 		TAlumno=new TextField();
@@ -209,6 +208,7 @@ public class BorderPaneSolicitud extends BorderPane {
 		scroll.setContent(contenedorListado);
 		
 	}
+	
 	public void accionBotonVer(Button btn, SolicitudCondicional soli) {
 		btn.setOnAction(vent -> {
 		    

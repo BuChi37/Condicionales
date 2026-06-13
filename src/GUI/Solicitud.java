@@ -11,8 +11,8 @@ import modelo.SolicitudCondicional;
 
 public class Solicitud extends BorderPane{
 	
-	private Label titulo, nombre, nroLegajo, fecha,materia, motivo, dictamen;
 	
+	private Label titulo, nombre, nroLegajo, fecha,materia, motivo, dictamen;
 	
 	
 	public void mostar(SolicitudCondicional solicitud) {
@@ -74,8 +74,6 @@ public class Solicitud extends BorderPane{
 			regla.setWrapText(true);
 			contenedor.getChildren().add(regla);
 		}
-		
-		
 		
 		
 		panelSoli.setCenter(contenedor);

@@ -1,6 +1,7 @@
 package GUI;
 
 import java.time.LocalDate;
+
 import java.time.format.DateTimeFormatter;
 
 import infraestructura.ListaDoubleLinkedL;
@@ -21,7 +22,7 @@ import modelo.Materia;
 import modelo.PlanEstudio;
 import modelo.RegistroSolicitudes;
 import modelo.SolicitudCondicional;
-import servivios.MotorCondicionalidad;
+import servicios.MotorCondicionalidad;
 
 public class BorderPaneNuevaSolicitud extends BorderPane{
 	private SolicitudCondicional soli;
@@ -103,9 +104,11 @@ public class BorderPaneNuevaSolicitud extends BorderPane{
 		panelSoli.setCenter(cont);
 		return panelSoli;
 	}
+	
 	public void setOnSolicitudCargada(Runnable accion) {
         this.accionAlCargar = accion;
     }
+	
 	public void cargarSolicitud(Button boton,PlanEstudio plan,RegistroSolicitudes registro) {
 		boton.setOnAction(EventLayoutSoli->{
 			

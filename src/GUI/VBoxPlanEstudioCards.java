@@ -42,14 +42,8 @@ public class VBoxPlanEstudioCards extends VBox {
 
         getChildren().add(scroll);
         
-        
-        /*
-        scroll.setStyle(
-        	    "-fx-background: #121824;" +
-        	    "-fx-background-color: #121824;" +
-        	    "-fx-border-color: red;"
-        	);*/
     }
+    
 
     private void agregarAnio(VBox contenido, PlanEstudio plan,int anio, String tituloAnio) {
 

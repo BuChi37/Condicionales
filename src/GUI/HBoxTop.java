@@ -1,9 +1,5 @@
 package GUI;
 
-
-
-
-
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
@@ -30,13 +26,10 @@ public class HBoxTop extends HBox{
 		
 	}
 	
-	
 	public void mostrar() {
 		cargarHBoxBotones();
 		
 	}
-	
-	
 	
 	public void cargarHBoxBotones() {
 		HBox panelBotones = new HBox();
@@ -53,10 +46,6 @@ public class HBoxTop extends HBox{
 		
 		Button boton3 = new Button();
 		cargarBotonSoli(boton3);
-		
-		
-		
-		
 		
 		
 		panelBotones.getChildren().addAll(boton1, boton2, boton3);
@@ -88,16 +77,6 @@ public class HBoxTop extends HBox{
 		 boton.setText("Plan de Estudio");
 		    boton.getStyleClass().add("btn-Menu");
 
-		    /*
-		    boton.setOnAction(event -> {
-
-		    	BorderPanePlanEstudio panelPlan =new BorderPanePlanEstudio(pla);
-
-		        principal.setCenter(panelPlan);
-		        
-
-		    } ); */
-		    
 		    //prueba nueva interfaz:
 		    boton.setOnAction(event -> {
 
@@ -108,7 +87,6 @@ public class HBoxTop extends HBox{
 		    });
 		
 	}
-	
 	
 	//tercer boton
 	public void cargarBotonSoli(Button boton) {
@@ -125,15 +103,8 @@ public class HBoxTop extends HBox{
 		
 	}
 		
-	
-	
-	
-	
-	
 	//para esterilizar los botones
 	public void styleButton(Button button) {
-		
-		
 		
 		//eventos para cuando el cursor este sobre el botont
 		button.setOnMouseEntered(e -> {

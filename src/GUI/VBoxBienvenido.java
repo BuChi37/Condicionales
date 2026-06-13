@@ -12,10 +12,5 @@ public class VBoxBienvenido extends VBox{
 		setAlignment(Pos.CENTER);
 		setPrefSize(Double.MAX_VALUE,Double.MAX_VALUE);
 		
-		
-		
 	}
-	
-	
-
 }

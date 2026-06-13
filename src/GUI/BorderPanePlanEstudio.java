@@ -19,25 +19,15 @@ public class BorderPanePlanEstudio extends BorderPane {
         setPrefSize(Double.MAX_VALUE, Double.MAX_VALUE);
 
         setStyle("-fx-background-color: #121824;");
-        //setStyle("-fx-background-color: red;");
+
 
         mostrar();
     }
 
     private void mostrar() {
-/*
-        Label titulo = new Label("Plan de Estudios");
 
-        titulo.setStyle(
-                "-fx-font-size: 24px;" +
-                "-fx-font-weight: bold;"
-        );
+        VBoxPlanEstudioCards vistaPlan = new VBoxPlanEstudioCards(plan);
 
-        BorderPane.setAlignment(titulo, Pos.CENTER);*/
-
-        VBoxPlanEstudio vistaPlan = new VBoxPlanEstudio(plan);
-
-       // setTop(titulo);
         setCenter(vistaPlan);
     }
 }
