@@ -6,6 +6,8 @@ package GUI;
 
 
 
+import java.util.function.UnaryOperator;
+
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -15,6 +17,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
@@ -308,21 +311,47 @@ public class BorderPaneAlumno extends BorderPane{
 		subPantallaBloqueo.setMaxSize(HBox.USE_PREF_SIZE, HBox.USE_PREF_SIZE);
 		
 		
-		Button btnPreguntar = new Button();
-		Button btnDevolver = new Button();
+		Button btnPreguntar = new Button();	btnPreguntar.getStyleClass().add("btn-preguntar");
+		Button btnDevolver = new Button();	btnDevolver.getStyleClass().add("btn-volver");
 		PasswordField campoContracenia = new PasswordField();
 		subPantallaBloqueo.getChildren().addAll(btnDevolver,campoContracenia,btnPreguntar);
 		
 		pantallaBloqueo.getChildren().add(subPantallaBloqueo);
 		
-		//btnDevolver.setOnAction(evento -> );
+		
+		
+		btnDevolver.setOnAction(evento -> {
+			
+			Stage stage = (Stage) btnDevolver.getScene().getWindow();
+		    
+		    // 2. Cerramos la ventana
+		    stage.close();
+		});
+		
+		
+		
+		UnaryOperator<TextFormatter.Change> filter = change -> {
+		    String newText = change.getControlNewText();
+		    
+		    
+		    if (newText.matches("\\d*")) {
+		        return change; 
+		    }
+		    
+		    
+		    return null; 
+		};
+		
+		campoContracenia.setTextFormatter( new TextFormatter<>(filter));
 		btnPreguntar.setOnAction(event -> {
 			
-			if(campoContracenia.getText()!= null ) {
+			String contraceniaString = campoContracenia.getText();
+			
+			if(contraceniaString != null  && !contraceniaString.isEmpty() ) {
 				
 				try {
 					
-					int contraceniaIngresada= Integer.parseInt(campoContracenia.getText());
+					Integer contraceniaIngresada= Integer.parseInt(contraceniaString);
 					if(this.contracenia == contraceniaIngresada) {
 						
 						pantallaBloqueo.getChildren().clear();
@@ -330,6 +359,7 @@ public class BorderPaneAlumno extends BorderPane{
 						pantallaBloqueo.getChildren().add( panelZonas);
 						
 					}
+					
 					
 				}catch (NumberFormatException e) {
 					System.out.println(e);
@@ -369,7 +399,7 @@ public class BorderPaneAlumno extends BorderPane{
 		Label materia = new Label();					materia.getStyleClass().add("label");
 		Label estadoActual= new Label();				estadoActual.getStyleClass().add("label");
 		Label nuevoEstado = new Label();				nuevoEstado.getStyleClass().add("label");
-		Button btnAceptar = new Button("aplicar ");	btnAceptar.getStyleClass().add("btn-aceptar");
+		Button btnAceptar = new Button("salir");		btnAceptar.getStyleClass().add("btn-aceptar");
 		
 		
 		ComboBox<EstadoAcademico> comboMaterias = new ComboBox<>();
@@ -391,7 +421,8 @@ public class BorderPaneAlumno extends BorderPane{
 		    this.nuevoEstadoCambio = comboMaterias.getValue();
 		    
 		    if (nuevoEstadoCambio != null) {
-		        
+		        if(nuevoEstadoCambio != estado.getEstado() ) btnAceptar.setText("cambiar");
+		        else btnAceptar.setText("salir");
 		        nuevoEstado.setText(nuevoEstadoCambio.name());
 		        
 		       
@@ -404,7 +435,7 @@ public class BorderPaneAlumno extends BorderPane{
 			if(this.nuevoEstadoCambio != null) {
 				
 				this.AlumnoActual.getHistorial().ModificarEstado(nuevoEstadoCambio, this.materiaActual.getCodigo());
-				
+				createBorderPaneAlumno();
 			}
 			
 			Stage ventana = (Stage) btnAceptar.getScene().getWindow();
