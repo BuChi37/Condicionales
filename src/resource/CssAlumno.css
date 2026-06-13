@@ -24,9 +24,28 @@
 	
 	-fx-min-width: 100px;
 	-fx-text-fill: white;
+	-fx-background-color: transparent;
+	
+	-fx-border-radius: 3px;
+	-fx-background-radius: 3px;
+	-fx-border-color: #E2E8F0;
+	-fx-border-width: 1px;
 }
 .modificarHisotial{
 	
 	-fx-padding: 10px;
+	
+}
+
+.btn-volver{
+	-fx-min-width: 30px;
+	-fx-text-fill: white;
+	
+}
+
+.btn-preguntar{
+	-fx-min-width: 30px;
+	-fx-text-fill: white;
+
 	
 }

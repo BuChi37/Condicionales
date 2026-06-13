@@ -2,6 +2,7 @@ package GUI;
 
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import carga.Escritor;
 import infraestructura.ListaDoubleLinkedL;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
@@ -191,6 +192,7 @@ public class BorderPaneSolicitud extends BorderPane {
 				    resultado.setStyle("-fx-background-color: #3a1b1b; -fx-text-fill: #e74c3c;");
 				}
 				
+				
 				Button ver=new Button("ver");
 				ver.getStyleClass().add("boton-ver");
 				accionBotonVer(ver,soli);
@@ -202,6 +204,8 @@ public class BorderPaneSolicitud extends BorderPane {
 		        filaSolicitud.getChildren().addAll(nombre, materia, separador , resultado, ver);
 		        
 				contenedorListado.getChildren().add(filaSolicitud);
+				
+				
 			}
 		}
 		
@@ -216,4 +220,6 @@ public class BorderPaneSolicitud extends BorderPane {
 		    indiv.mostar(soli);
 		});
 	}
+	
+	
 }
