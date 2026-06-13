@@ -33,13 +33,13 @@ public class CatalogoMaterias extends Lista2DLinkedL{
 	}
 	
 	public Materia devolverMateria(String nombre) {
-		Materia m=new Materia(0, nombre, 0);
-		for(int i=0;i<super.tamanio();i++) {
-			if(obtenerMateria(i).esIgual(nombre)) {
-				m=obtenerMateria(i);
-			}
+		
+		for(int i=1;i<=super.tamanio();i++) {
+			if (this.getMateria(i).esIgual(nombre)) {
+	            return this.getMateria(i); // ¡La encontramos! La devolvemos inmediatamente
+	        }
 		}
-		return m;
+		return null;
 	}
 	
 	public Materia getMateria(int codigo) { //obtiene materia por codigo

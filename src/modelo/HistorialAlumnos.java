@@ -1,6 +1,7 @@
 package modelo;
 
 import infraestructura.Lista2DLinkedL;
+import infraestructura.ListaDoubleLinkedL;
 
 public class HistorialAlumnos extends Lista2DLinkedL{
 
@@ -58,7 +59,15 @@ public class HistorialAlumnos extends Lista2DLinkedL{
 		
 		return false;
 	}
-	
+	public int getContadorAprobadas() {
+		int aprobadas=0;
+		for(int i=0;i<this.tamanio();i++) {
+			if(this.estaAprobado(i+1)) {
+				aprobadas++;
+			}
+		}
+		return aprobadas;
+	}
 	
 	public boolean estaRegular(int codigo) {
 		

@@ -13,8 +13,9 @@ public class ReglaCorrelativasRegularizadas implements ReglaAcademica{
 		
 		for(int i=0;i<correlativas.tamanio();i++) {
 			materia=(Materia)correlativas.devolver(i);
-			
+			System.out.println(materia.getNombre());
 			if(plan.obtenerCondicionRequerida(materia,solic.getMateriaSolicitada()) == TipoCondicion.REGULAR) {
+				
 				if(!historial.estaRegular(materia.getCodigo()) && !historial.estaAprobado(materia.getCodigo())) {
 					cumple=false;
 					if(motivo.isEmpty()) {

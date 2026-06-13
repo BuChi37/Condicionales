@@ -11,6 +11,7 @@ import reglas.ReglaCorrelativasAprobadas;
 import reglas.ReglaCorrelativasRegularizadas;
 import reglas.ReglaMotivos;
 import reglas.ReglaPrimerAnio;
+import reglas.ReglaRendimientoAcademico;
 
 public class MotorCondicionalidad {
 	
@@ -26,6 +27,7 @@ public class MotorCondicionalidad {
 		agregarRegla(new ReglaCorrelativasRegularizadas());
 		agregarRegla(new ReglaPrimerAnio());
 		agregarRegla(new ReglaMotivos());
+		agregarRegla(new ReglaRendimientoAcademico());
 	}
 	public Dictamen evaluarSolicitud(Alumno alumno, SolicitudCondicional solicitud){
 		Dictamen dictamen=new Dictamen();
