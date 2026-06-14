@@ -62,7 +62,7 @@ public class Solicitud extends BorderPane{
 		contenedor.getChildren().addAll(titulo,nombre,nroLegajo,fecha,materia,motivo,dictamen);
 		
 		Button botonImprimir = new Button();
-		btnImprimir(botonImprimir,contenedor);
+		btnImprimir(botonImprimir,solicitud);
 		botonImprimir.getStyleClass().add("btn-imprimir");
 		
         contenedor.setId("detalle-solicitud-root");
@@ -100,26 +100,21 @@ public class Solicitud extends BorderPane{
 	}
 	
 	
-	private void btnImprimir(Button btn ,VBox nodoAImprimir) {
-	    
-	
+	private void btnImprimir(Button btn,SolicitudCondicional soli) {
+		    
 		
-		btn.setOnAction(event -> {
 			
-			Escritor escritor = new Escritor();
+			btn.setOnAction(event -> {
+				
+				Escritor escritor = new Escritor();
+				ComprobanteSolicitud comprobante= new ComprobanteSolicitud(soli);
+			     
+				Stage ventanaPadre = (Stage) btn.getScene().getWindow();
+				
+				escritor.imprimirComponente(comprobante, ventanaPadre);
 			
-			Stage ventanaPadre = (Stage) btn.getScene().getWindow();
+			});
 			
-			
-			btn.setVisible(false);
-			
-			
-			escritor.imprimirComponente(nodoAImprimir, ventanaPadre);
-			
-			
-			btn.setVisible(true);
-		});
-		
 		
 	}
 }

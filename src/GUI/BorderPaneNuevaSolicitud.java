@@ -18,6 +18,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import modelo.Alumno;
 import modelo.CatalogoMaterias;
+import modelo.HistorialAlumnos;
 import modelo.Materia;
 import modelo.PlanEstudio;
 import modelo.RegistroSolicitudes;
@@ -126,6 +127,8 @@ public class BorderPaneNuevaSolicitud extends BorderPane{
 			if (nombreTexto.isEmpty()) errores.insertar("Ingrese el nombre.", errores.tamanio());
 			if (fechaCalendario == null) errores.insertar("Seleccione una fecha.", errores.tamanio());
 			if (seleccionado == null) errores.insertar("Seleccione un motivo.", errores.tamanio());
+			if (materiaTexto==null) errores.insertar("Ingrese una materia", errores.tamanio());
+			Materia mat=plan.getCatalogoMaterias().devolverMateria(materiaTexto);
 			
 			try {
 				int legajoNumero = Integer.parseInt(legajoTexto);
@@ -137,21 +140,33 @@ public class BorderPaneNuevaSolicitud extends BorderPane{
 			        errores.insertar("El legajo no coincide con el nombre.", errores.tamanio());
 			    }
 				
+				HistorialAlumnos historial =plan.buscarAlumno(Integer.parseInt(legajoTexto)).getHistorial();
+				
+				
+				if(historial.estaAprobado(mat.getCodigo()) || historial.estaRegular(mat.getCodigo())) {
+					errores.insertar("Ingrese otra materia"+mat.getNombre()+" ya esta cursada", errores.tamanio());
+				}
 				
 				
 			}catch (NumberFormatException e) {
 			    errores.insertar("El legajo debe ser solo números.",errores.tamanio());
 			}
+			
 			if (!errores.estaVacia()) {
-				
-				String mensajeCompleto = "Por favor: ";
-				for(int i=0;i<errores.tamanio();i++) {
-					mensajeCompleto  += " "+(String)errores.devolver(i)+"\n";
+				String mensajeCompleto;
+			
+				if(errores.tamanio()>1) {
+					mensajeCompleto="Por favor llene todos los campos";
+				}else {
+					mensajeCompleto = "Por favor: ";
+					for(int i=0;i<errores.tamanio();i++) {
+						mensajeCompleto  += " "+(String)errores.devolver(i)+"\n";
+					}
 				}
-			    
-			    error.setText(mensajeCompleto);
-			    return;
+				error.setText(mensajeCompleto);
+				return;
 			}
+			
 			this.error.setText("");
 			DateTimeFormatter formateador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 			String fechaS = fechaCalendario.format(formateador);
