@@ -6,8 +6,11 @@ package GUI;
 
 
 
+
 import java.util.function.UnaryOperator;
 
+import javafx.animation.PauseTransition;
+import javafx.animation.TranslateTransition;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -18,19 +21,19 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import javafx.scene.effect.GaussianBlur;
+
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.ColumnConstraints;
-import javafx.scene.layout.GridPane;
+
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
+
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.util.Duration;
 import modelo.Alumno;
 import modelo.EstadoAcademico;
 import modelo.EstadoMateria;
@@ -306,14 +309,15 @@ public class BorderPaneAlumno extends BorderPane{
 		ventanaFlotante.setResizable(false);
 		ventanaFlotante.setTitle("modificarHisotial");
 		
-		StackPane pantallaBloqueo = new StackPane();		pantallaBloqueo.getStyleClass().add("pantalla-bLoqueo");
+		StackPane pantallaBloqueo = new StackPane();		pantallaBloqueo.getStyleClass().add("pantalla-bLoqueo");	
 		HBox subPantallaBloqueo = new HBox();				subPantallaBloqueo.getStyleClass().add("sub-pantalla-bloqueo");
 		subPantallaBloqueo.setMaxSize(HBox.USE_PREF_SIZE, HBox.USE_PREF_SIZE);
-		
+		subPantallaBloqueo.setSpacing(10);
 		
 		Button btnPreguntar = new Button();	btnPreguntar.getStyleClass().add("btn-preguntar");
-		Button btnDevolver = new Button();	btnDevolver.getStyleClass().add("btn-volver");
+		Button btnDevolver = new Button();	btnDevolver.getStyleClass().add("btn-volver");		
 		PasswordField campoContracenia = new PasswordField();
+		campoContracenia.getStyleClass().add("password-field");
 		subPantallaBloqueo.getChildren().addAll(btnDevolver,campoContracenia,btnPreguntar);
 		
 		pantallaBloqueo.getChildren().add(subPantallaBloqueo);
@@ -360,6 +364,26 @@ public class BorderPaneAlumno extends BorderPane{
 						
 					}
 					
+					
+					if (this.contracenia != contraceniaIngresada) {
+					    
+					    
+					    if (!campoContracenia.getStyleClass().contains("password-field-error")) {
+					        campoContracenia.getStyleClass().add("password-field-error");
+					    }
+
+					    
+					    TranslateTransition shake = new TranslateTransition(Duration.millis(50), campoContracenia);
+					    shake.setByX(8);
+					    shake.setCycleCount(6);
+					    shake.setAutoReverse(true);
+					    shake.play();
+
+					    
+					    PauseTransition delay = new PauseTransition(Duration.seconds(1));
+					    delay.setOnFinished(e -> campoContracenia.getStyleClass().remove("password-field-error"));
+					    delay.play();
+					}
 					
 				}catch (NumberFormatException e) {
 					System.out.println(e);

@@ -7,6 +7,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import modelo.ResultadoRegla;
@@ -58,7 +60,10 @@ public class Solicitud extends BorderPane{
 		
 		VBox contenedor=new VBox();
 		contenedor.getChildren().addAll(titulo,nombre,nroLegajo,fecha,materia,motivo,dictamen);
-		Button botonImprimir= btnImprimir(contenedor);
+		
+		Button botonImprimir = new Button();
+		btnImprimir(botonImprimir,contenedor);
+		botonImprimir.getStyleClass().add("btn-imprimir");
 		
         contenedor.setId("detalle-solicitud-root");
 		
@@ -84,14 +89,20 @@ public class Solicitud extends BorderPane{
 		
 		
 		panelSoli.setCenter(contenedor);
-		panelSoli.setBottom(botonImprimir);
+		
+		HBox panel = new HBox();
+		panel.getChildren().add(botonImprimir);
+		panel.setStyle("-fx-background-color:#0c111c;"+ "-fx-padding: 0 10px 10px 20px;");
+		
+		panelSoli.setBottom(panel);
+		
 		return panelSoli;
 	}
 	
 	
-	private Button btnImprimir(VBox nodoAImprimir) {
-		Button btn = new Button("Imprimir Solicitud");
-		
+	private void btnImprimir(Button btn ,VBox nodoAImprimir) {
+	    
+	
 		
 		btn.setOnAction(event -> {
 			
@@ -109,6 +120,6 @@ public class Solicitud extends BorderPane{
 			btn.setVisible(true);
 		});
 		
-		return btn;
+		
 	}
 }

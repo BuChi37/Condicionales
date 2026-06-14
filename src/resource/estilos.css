@@ -2,6 +2,13 @@
 	
 	-fx-border-radius: 10px;
 	-fx-background-radius: 10px;	
+	-fx-background-color: transparent;
+	-fx-border-color: 
+		        linear-gradient(to right, transparent, #E2E8F0, #2C3545) 
+				#2C3545                                                  
+		        linear-gradient(to right, transparent, #E2E8F0, #2C3545) 
+		        #2C3545;
+	
 	-fx-text-fill: white;
 	-fx-pref-width: 160px;
 	-fx-pref-height: 40px;		
@@ -369,3 +376,4 @@
  .panel-materia{
      -fx-max-width: infinity;
  }
+ 

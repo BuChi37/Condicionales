@@ -1,5 +1,9 @@
 package GUI;
 
+
+
+
+
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
@@ -11,6 +15,9 @@ import modelo.PlanEstudio;
 public class HBoxTop extends HBox{
 	private PlanEstudio pla;
 	private BorderPane principal;
+	private Button btnAlumno;
+	private Button btnPlan;
+	private Button btnSoli;
 	
 	// panel 1
 	// panel 2
@@ -26,10 +33,18 @@ public class HBoxTop extends HBox{
 		
 	}
 	
+	
 	public void mostrar() {
 		cargarHBoxBotones();
+		javafx.application.Platform.runLater(() -> {
+	        this.btnSoli.fire();
+	        
+	    });
 		
+	    
 	}
+	
+	
 	
 	public void cargarHBoxBotones() {
 		HBox panelBotones = new HBox();
@@ -38,17 +53,21 @@ public class HBoxTop extends HBox{
 		panelBotones.setPadding( new Insets(10,0,0,0));
 		panelBotones.setSpacing(20);
 		
-		Button boton1 = new Button();
-		cargarBotonAlumno(boton1);
+		this.btnAlumno = new Button();
+		cargarBotonAlumno(this.btnAlumno);
 		
-		Button boton2 = new Button();
-		cargarBotonPlan(boton2);
+		this.btnPlan = new Button();
+		cargarBotonPlan(this.btnPlan);
 		
-		Button boton3 = new Button();
-		cargarBotonSoli(boton3);
+		this.btnSoli= new Button();
+		cargarBotonSoli(this.btnSoli);
 		
 		
-		panelBotones.getChildren().addAll(boton1, boton2, boton3);
+		
+		
+		
+		
+		panelBotones.getChildren().addAll(btnAlumno, btnPlan, btnSoli);
 		getChildren().add(panelBotones);
 		
 	}
@@ -68,6 +87,12 @@ public class HBoxTop extends HBox{
 			
 			principal.setCenter(panelAlumnos);
 			
+			btnAlumno.setDisable(false);
+		    btnPlan.setDisable(false);
+		    btnSoli.setDisable(false);
+		    
+		    btnAlumno.setDisable(true);
+			
 		} );
 		
 	}
@@ -77,16 +102,32 @@ public class HBoxTop extends HBox{
 		 boton.setText("Plan de Estudio");
 		    boton.getStyleClass().add("btn-Menu");
 
+		    /*
+		    boton.setOnAction(event -> {
+
+		    	BorderPanePlanEstudio panelPlan =new BorderPanePlanEstudio(pla);
+
+		        principal.setCenter(panelPlan);
+		        
+
+		    } ); */
+		    
 		    //prueba nueva interfaz:
 		    boton.setOnAction(event -> {
 
 		        VBoxPlanEstudioCards vista =new VBoxPlanEstudioCards(pla);
 
 		        principal.setCenter(vista);
+		        btnAlumno.setDisable(false);
+			    btnPlan.setDisable(false);
+			    btnSoli.setDisable(false);
+			    
+			    btnPlan.setDisable(true);
 
 		    });
 		
 	}
+	
 	
 	//tercer boton
 	public void cargarBotonSoli(Button boton) {
@@ -99,12 +140,25 @@ public class HBoxTop extends HBox{
 			
 			principal.setCenter(panelSoli);
 			
+			btnAlumno.setDisable(false);
+		    btnPlan.setDisable(false);
+		    btnSoli.setDisable(false);
+		    
+		    btnSoli.setDisable(true);
+			
 		} );
 		
 	}
 		
+	
+	
+	
+	
+	
 	//para esterilizar los botones
 	public void styleButton(Button button) {
+		
+		
 		
 		//eventos para cuando el cursor este sobre el botont
 		button.setOnMouseEntered(e -> {
