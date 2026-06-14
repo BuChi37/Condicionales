@@ -183,8 +183,21 @@
     -fx-text-fill: #ffffff !important;
     -fx-background-radius: 5px;
     -fx-padding: 5px 12px;
+	
     -fx-font-weight: bold;
-    -fx-cursor: hand;
+	
+	-fx-background-color: transparent;
+	-fx-background-size: 100% 100%;
+			
+		
+			
+	-fx-background-image: url("verTrasnparente.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+
+	-fx-background-size: contain; 
+	-fx-cursor: hand;
+    
 }
 .boton-ver:hover {
     -fx-background-color: #34495e; /* Cambio sutil al pasar el mouse */
@@ -266,4 +279,26 @@
     -fx-background-color: rgba(231, 76, 60, 0.08);  /* Fondo rojo sutil */
     -fx-text-fill: #ff6b6b;                         /* Texto rojo/coral nítido */
     -fx-border-color: rgba(231, 76, 60, 0.25);
+}
+
+
+.btn-imprimir{
+	-fx-min-height: 40px;
+	-fx-min-width: 90px; 
+	-fx-text-fill: white;
+	
+	
+	-fx-background-color: transparent;
+	-fx-background-size: 100% 100%;
+		
+	-fx-border-radius: 3px;
+	-fx-background-radius: 3px;
+	-fx-border-color: #E2E8F0;
+	-fx-border-width: 1px;
+		
+	-fx-background-image: url("imprimirTransparente.png");
+   	-fx-background-repeat: no-repeat;
+   	-fx-background-position: center;
+	-fx-background-size: contain;
+	-fx-cursor: hand;
 }

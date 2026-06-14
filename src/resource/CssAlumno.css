@@ -40,12 +40,60 @@
 .btn-volver{
 	-fx-min-width: 30px;
 	-fx-text-fill: white;
+	-fx-background-color: transparent;
+	-fx-background-size: 100% 100%;
+		
+	
+		
+	-fx-background-image: url("volverTransparente.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+
+	 -fx-background-size: contain; 
+	 -fx-cursor: hand;
 	
 }
 
+.btn-volver:hover{
+	-fx-translate-y: -1px;
+	
+}
 .btn-preguntar{
 	-fx-min-width: 30px;
 	-fx-text-fill: white;
-
 	
+	-fx-background-color: transparent;
+		-fx-background-size: 100% 100%;
+			
+		
+			
+	-fx-background-image: url("bloqueadoTransparente.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+	-fx-background-size: contain;
+	-fx-cursor: hand;
+	
+}
+			
+	
+}
+
+.btn-preguntar:hover{
+	-fx-translate-y: -1px;
+	
+}
+
+
+.password-field {
+    -fx-background-color: #1a2634;
+    -fx-text-fill: white;
+    -fx-border-color: transparent;
+}
+
+
+.password-field-error {
+    -fx-border-color: #c0392b; 
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-background-color: #2c1a1a; 
 }

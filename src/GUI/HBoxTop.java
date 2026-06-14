@@ -15,6 +15,9 @@ import modelo.PlanEstudio;
 public class HBoxTop extends HBox{
 	private PlanEstudio pla;
 	private BorderPane principal;
+	private Button btnAlumno;
+	private Button btnPlan;
+	private Button btnSoli;
 	
 	// panel 1
 	// panel 2
@@ -33,7 +36,12 @@ public class HBoxTop extends HBox{
 	
 	public void mostrar() {
 		cargarHBoxBotones();
+		javafx.application.Platform.runLater(() -> {
+	        this.btnSoli.fire();
+	        
+	    });
 		
+	    
 	}
 	
 	
@@ -45,21 +53,21 @@ public class HBoxTop extends HBox{
 		panelBotones.setPadding( new Insets(10,0,0,0));
 		panelBotones.setSpacing(20);
 		
-		Button boton1 = new Button();
-		cargarBotonAlumno(boton1);
+		this.btnAlumno = new Button();
+		cargarBotonAlumno(this.btnAlumno);
 		
-		Button boton2 = new Button();
-		cargarBotonPlan(boton2);
+		this.btnPlan = new Button();
+		cargarBotonPlan(this.btnPlan);
 		
-		Button boton3 = new Button();
-		cargarBotonSoli(boton3);
-		
-		
+		this.btnSoli= new Button();
+		cargarBotonSoli(this.btnSoli);
 		
 		
 		
 		
-		panelBotones.getChildren().addAll(boton1, boton2, boton3);
+		
+		
+		panelBotones.getChildren().addAll(btnAlumno, btnPlan, btnSoli);
 		getChildren().add(panelBotones);
 		
 	}
@@ -78,6 +86,12 @@ public class HBoxTop extends HBox{
 			BorderPane panelAlumnos= new BorderPaneAlumno(pla);
 			
 			principal.setCenter(panelAlumnos);
+			
+			btnAlumno.setDisable(false);
+		    btnPlan.setDisable(false);
+		    btnSoli.setDisable(false);
+		    
+		    btnAlumno.setDisable(true);
 			
 		} );
 		
@@ -104,6 +118,11 @@ public class HBoxTop extends HBox{
 		        VBoxPlanEstudioCards vista =new VBoxPlanEstudioCards(pla);
 
 		        principal.setCenter(vista);
+		        btnAlumno.setDisable(false);
+			    btnPlan.setDisable(false);
+			    btnSoli.setDisable(false);
+			    
+			    btnPlan.setDisable(true);
 
 		    });
 		
@@ -120,6 +139,12 @@ public class HBoxTop extends HBox{
 			BorderPane panelSoli= new BorderPaneSolicitud(pla);
 			
 			principal.setCenter(panelSoli);
+			
+			btnAlumno.setDisable(false);
+		    btnPlan.setDisable(false);
+		    btnSoli.setDisable(false);
+		    
+		    btnSoli.setDisable(true);
 			
 		} );
 		

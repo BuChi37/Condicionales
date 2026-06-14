@@ -194,7 +194,7 @@ public class BorderPaneSolicitud extends BorderPane {
 				}
 				
 				
-				Button ver=new Button("ver");
+				Button ver=new Button();
 				ver.getStyleClass().add("boton-ver");
 				accionBotonVer(ver,soli);
 				
