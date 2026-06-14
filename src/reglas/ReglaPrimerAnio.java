@@ -20,12 +20,12 @@ public class ReglaPrimerAnio implements ReglaAcademica{
 				if(plan.obtenerCondicionRequerida(materia, solic.getMateriaSolicitada()) == TipoCondicion.REGULAR) {
 					if(!historial.estaRegular(materia.getCodigo()) && !historial.estaAprobado(materia.getCodigo())) {
 						cumple=false;
-						materiasR+=materia+", ";
+						materiasR+=materia.getNombre()+", ";
 					}
 				}else {
 					if(!historial.estaAprobado(materia.getCodigo())) {
 						cumple=false;
-						materiasA+=materia+", ";
+						materiasA+=materia.getNombre()+", ";
 					}
 				}
 			}
