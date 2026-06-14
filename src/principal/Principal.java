@@ -24,6 +24,11 @@ public class Principal extends Application{
 		
 	}
 	
+	
+	
+	
+	
+
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		
@@ -53,6 +58,7 @@ public class Principal extends Application{
 		
 	}
 	
+
 	public static void main(String[] args) {
 		
 		launch(args);
