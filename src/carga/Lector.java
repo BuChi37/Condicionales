@@ -15,17 +15,33 @@ import modelo.ListaAlumnos;
 import modelo.Materia;
 import modelo.TipoCondicion;
 
-
+/**
+ * Responsable de cargar la información académica desde archivos CSV.
+ *
+ * Permite construir las estructuras principales del sistema:
+ * - Catálogo de materias.
+ * - Grafo de correlatividades.
+ * - Alumnos e historiales académicos.
+ *
+ * Actúa como capa de acceso a datos durante la inicialización
+ * del PlanEstudio.
+ */
 public class Lector {
 	
-	
-	
+	/**
+	 * Cuenta la cantidad de materias registradas en el archivo.
+	 *
+	 * El valor obtenido se utiliza para determinar el tamaño
+	 * necesario del grafo de correlatividades.
+	 *
+	 * @param ruta directorio donde se encuentra Materias.csv.
+	 * @return cantidad de materias encontradas.
+	 */
 	public int  leerTamanio(String ruta) {
 		
 		String rutaMaterias = ruta +"/Materias.csv";
         int tamanio = 0;
-        
-        
+                
         try(BufferedReader br = new BufferedReader(new FileReader(rutaMaterias))){
         
             String linea;
@@ -35,8 +51,6 @@ public class Lector {
                 tamanio++;
             }
         
-        
-        
         }catch(Exception e){
             System.out.println(e);
         }
@@ -45,16 +59,28 @@ public class Lector {
 		
 	}
 	
+	/**
+	 * Carga las correlatividades académicas dentro del grafo.
+	 *
+	 * Cada registro del archivo representa una relación entre
+	 * dos materias y una condición requerida:
+	 * - R: Regularizada.
+	 * - A: Aprobada.
+	 *
+	 * La información se transforma en un arco dirigido dentro
+	 * del grafo de correlatividades.
+	 *
+	 * @param ruta directorio donde se encuentra el archivo.
+	 * @param grafo grafo que recibirá las correlatividades.
+	 */
 	public void leerCorrelativa(String ruta, GrafoDirigido grafo) {
 		String rutaCorrelativa = ruta + "/TUP.csv";
 		
 		 try(BufferedReader brA= new BufferedReader(new FileReader(rutaCorrelativa) ) ){
 	            String linea;
-	         
-	            
+	                     
 	            while(  (linea= brA.readLine())!= null ){
 	            	
-	                
 	                if(linea.startsWith("\uFEFF")){
 	                    linea = linea.substring(1);
 	                }
@@ -67,14 +93,10 @@ public class Lector {
 		                char estadoChar = datos[1].charAt(0);
 		                int idOtra = Integer.parseInt(datos[2].trim());
 		                
-		                
-		                
 		                int estadoInt = 0;
 		                
 		                if(estadoChar == 'R') estadoInt =1;
 		                else estadoInt=2;
-		                
-		                
 		                
 		                grafo.agregarArco(idOtra, id, estadoInt);
 		                
@@ -89,6 +111,14 @@ public class Lector {
 		
 		
 	}
+	
+	/**
+	 * Carga las materias del plan de estudios desde archivo
+	 * y las incorpora al catálogo de materias.
+	 *
+	 * @param ruta directorio donde se encuentra Materias.csv.
+	 * @param lista catálogo donde se almacenarán las materias.
+	 */
 	public void leerMateria(String ruta, CatalogoMaterias lista) {
 		
 		String rutaMateria = ruta +"/Materias.csv";
@@ -123,6 +153,16 @@ public class Lector {
 		
 	}
 	
+	/**
+	 * Carga los alumnos registrados en el sistema.
+	 *
+	 * Por cada alumno leído se carga también su historial
+	 * académico correspondiente.
+	 *
+	 * @param ruta directorio donde se encuentran los datos.
+	 * @param listaAlumnos colección donde se almacenarán
+	 *                     los alumnos cargados.
+	 */
 	public void leerAlumnos(String ruta, ListaAlumnos listaAlumnos){
         String rutaAlumno= ruta+"/alumnos.csv";
         try(BufferedReader brA= new BufferedReader(new FileReader(rutaAlumno) ) ){
@@ -145,9 +185,6 @@ public class Lector {
               
                 String rutaHistorial = ruta+"/Historiales"+"/"+id+"H.csv"; 
                 
-
-                
-                
                 
                 leerHistorial(rutaHistorial, alumno);
                 
@@ -160,26 +197,33 @@ public class Lector {
         }
     }
 	
+	/**
+	 * Carga el historial académico de un alumno.
+	 *
+	 * Cada registro del archivo indica una materia y el estado
+	 * académico alcanzado por el alumno en dicha materia.
+	 *
+	 * @param ruta archivo de historial a procesar.
+	 * @param alumno alumno que recibirá los estados académicos.
+	 */
 	private void leerHistorial (String ruta, Alumno alumno) {
 		
         try(BufferedReader brA= new BufferedReader(new FileReader(ruta) ) ){
             String linea;
-         
-            
+          
             while(  (linea= brA.readLine())!= null ){
-                  
-                
+                               
                 if(linea.startsWith("\uFEFF")){
                     linea = linea.substring(1);
                 }
                 String[] datos = linea.split(";");
                 
-                int Codigo = Integer.parseInt(datos[0].trim());
+                int codigo = Integer.parseInt(datos[0].trim());
                 int estado = Integer.parseInt(datos[1].trim());
                 
                 EstadoAcademico estadoAcademico = EstadoAcademico.values()[estado];
                 
-                EstadoMateria estadoMateria = new EstadoMateria(Codigo, estadoAcademico);
+                EstadoMateria estadoMateria = new EstadoMateria(codigo, estadoAcademico);
                 
                 alumno.agregarEstado(estadoMateria);
                 

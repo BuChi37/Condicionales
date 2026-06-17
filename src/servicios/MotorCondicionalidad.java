@@ -13,11 +13,31 @@ import reglas.ReglaMotivos;
 import reglas.ReglaPrimerAnio;
 import reglas.ReglaRendimientoAcademico;
 
+
+/**
+ * Coordina el proceso de evaluación de solicitudes
+ * de condicionalidad.
+ *
+ * Mantiene un conjunto de reglas académicas y las
+ * ejecuta sobre una solicitud para generar un
+ * dictamen final.
+ *
+ * Cada regla se evalúa de forma independiente y
+ * contribuye al resultado global de la evaluación.
+ */
 public class MotorCondicionalidad {
 	
-	private ListaDoubleLinkedL reglas;
-	private PlanEstudio plan;
+	private ListaDoubleLinkedL reglas; // Conjunto de reglas académicas utilizadas durante la evaluación de solicitudes.
+	private PlanEstudio plan; // Plan de estudios utilizado como fuente de información académica durante las evaluaciones.
 	
+	
+	/**
+	 * Crea un motor de evaluación asociado a un plan
+	 * de estudios e inicializa las reglas académicas
+	 * que participarán del análisis.
+	 *
+	 * @param plan plan de estudios utilizado durante las evaluaciones.
+	 */
 	public MotorCondicionalidad (PlanEstudio plan) {
 		
 		this.plan=plan;
@@ -28,7 +48,8 @@ public class MotorCondicionalidad {
 		agregarRegla(new ReglaPrimerAnio());
 		agregarRegla(new ReglaMotivos());
 		agregarRegla(new ReglaRendimientoAcademico());
-	}
+	} 
+	
 	public Dictamen evaluarSolicitud(Alumno alumno, SolicitudCondicional solicitud){
 		Dictamen dictamen=new Dictamen();
 		ResultadoRegla resul;
@@ -59,9 +80,11 @@ public class MotorCondicionalidad {
 		}
 		return dictamen;
 	}
+	
 	public void agregarRegla(ReglaAcademica regla){
 		reglas.insertar(regla, reglas.tamanio());
 	}
+	
 	public void removerRegla(ReglaAcademica regla) {
 		reglas.eliminar(reglas.buscar(regla));
 	}

@@ -36,7 +36,7 @@ public class CatalogoMaterias extends Lista2DLinkedL{
 		
 		for(int i=1;i<=super.tamanio();i++) {
 			if (this.getMateria(i).esIgual(nombre)) {
-	            return this.getMateria(i); // ¡La encontramos! La devolvemos inmediatamente
+	            return this.getMateria(i); 
 	        }
 		}
 		return null;

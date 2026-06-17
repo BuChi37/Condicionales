@@ -25,7 +25,7 @@ public class Materia {
 		
 		return (((Materia)elemento).getCodigo() == this.codigo);
 	}
-	// no c para que usar el equals por ahora 
+	
 	public boolean esIgual(String nombre) {
 		return this.getNombre().equalsIgnoreCase(nombre);
 	}

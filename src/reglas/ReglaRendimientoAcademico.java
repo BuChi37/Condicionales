@@ -4,8 +4,34 @@ import modelo.PlanEstudio;
 import modelo.ResultadoRegla;
 import modelo.SolicitudCondicional;
 
+
+/**
+ * Evalúa el rendimiento académico global del alumno.
+ *
+ * Para materias ubicadas en la primera mitad de la
+ * carrera, el requisito de porcentaje mínimo aprobado
+ * no se aplica.
+ *
+ * Para materias de la segunda mitad de la carrera,
+ * el alumno debe poseer al menos el 60% de las
+ * materias aprobadas.
+ */
 public class ReglaRendimientoAcademico implements ReglaAcademica{
 
+	
+	/**
+	 * Determina si el alumno cumple con el requisito
+	 * mínimo de avance académico para solicitar la
+	 * condicionalidad.
+	 *
+	 * El criterio aplicado depende de la ubicación de
+	 * la materia dentro del plan de estudios.
+	 *
+	 * @param solic solicitud a evaluar.
+	 * @param plan plan de estudios utilizado para
+	 *             calcular el avance académico.
+	 * @return resultado de la evaluación.
+	 */
 	@Override
 	public ResultadoRegla evaluar(SolicitudCondicional solic, PlanEstudio plan) {
 	

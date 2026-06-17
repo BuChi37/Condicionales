@@ -2,18 +2,36 @@ package servicios;
 import infraestructura.ListaDoubleLinkedL;
 import modelo.*;
 
+
+/**
+ * Proporciona servicios de análisis académico sobre un PlanEstudio.
+ *
+ * Actúa como una capa de lógica académica por encima de las estructuras
+ * de datos del sistema.
+ */
+
 public class AnalizadorAcademico {
 	
-	private PlanEstudio plan;
+	private PlanEstudio plan; //Plan de estudios sobre el cual se realizan los análisis.
 	
+	/**
+	 * Crea un analizador asociado a un plan de estudios.
+	 */
 	public AnalizadorAcademico(PlanEstudio plan) {
 		this.plan=plan;
 	}
+	
+	/**
+	 * Obtiene las materias desde las cuales puede alcanzarse
+	 * la materia indicada a través de una cadena de correlatividades.
+	 *
+	 * El resultado puede incluir correlatividades directas e indirectas.
+	 */
 	public ListaDoubleLinkedL obtenerCorrelativasIndirectas(Materia materia) {
-		//se utiliza mas que nada para las optativas, si quiero saber todas las materias que debo hacer para poder hacer la correlativa
+		//se utiliza principalmente para las optativas, si quiero saber todas las materias que debo hacer para poder cursarla
 		ListaDoubleLinkedL correlativasI= new ListaDoubleLinkedL();
 		Materia materiaEvaluada;
-		int indiceM = plan.getCatalogoMaterias().obtenerIndice(materia); //cambio obtenerIndice por getCodigo
+		int indiceM = plan.getCatalogoMaterias().obtenerIndice(materia); 
 		
 		for (int i = 0; i < indiceM; i++) {
 	        materiaEvaluada = plan.getCatalogoMaterias().getMateria(i);
@@ -25,12 +43,20 @@ public class AnalizadorAcademico {
 	        }
 	    }
 		
-		return null;
+		return null; //!!
 		
 	}
+	
+	/**
+	 * Obtiene las materias que dependen directa o indirectamente
+	 * de la materia indicada.
+	 *
+	 * Si la materia no pudiera cursarse o aprobarse, las materias
+	 * devueltas por este método quedarían académicamente bloqueadas.
+	 */
 	public ListaDoubleLinkedL materiasBloqueadas(Materia materia) {
 		ListaDoubleLinkedL materiasB=new ListaDoubleLinkedL();
-		//origen ami y destino ayed
+		
 		Materia materia2;
 		ListaDoubleLinkedL marcas = plan.obtenerMateriasRelacionadas(materia);
 		
@@ -44,9 +70,14 @@ public class AnalizadorAcademico {
 		
 		return materiasB;
 	}
+	
+	/**
+	 * Obtiene las materias que poseen una correlatividad directa
+	 * con la materia indicada.
+	 */
 	public ListaDoubleLinkedL materiasHabilitadas(Materia materia) {
 		ListaDoubleLinkedL materiasH=new ListaDoubleLinkedL();
-		//origen ami y destino ayed
+		
 		Materia materia2;
 		
 		for(int i=materia.getCodigo()+1;i<this.plan.getCatalogoMaterias().tamanio();i++) {
@@ -58,6 +89,24 @@ public class AnalizadorAcademico {
 		
 		return materiasH;
 	}
+	
+	/**
+	 * Filtra las solicitudes de condicionalidad según los criterios
+	 * ingresados por el usuario.
+	 *
+	 * Los filtros son acumulativos:
+	 * - Estado de la solicitud.
+	 * - Legajo del alumno.
+	 * - Nombre de la materia.
+	 *
+	 * Si un criterio no se especifica, no se aplica restricción
+	 * sobre ese campo.
+	 *
+	 * @param legajo legajo a buscar o cadena vacía.
+	 * @param materia nombre de materia a buscar o cadena vacía.
+	 * @param estado estado de solicitud o "Todos".
+	 * @return lista de solicitudes que cumplen los filtros.
+	 */
 	public ListaDoubleLinkedL filtrar(String legajo, String materia, String estado) {
 	   
 	    ListaDoubleLinkedL resultado = plan.getRegistroSolicitudes().obtenerSolicitudes();

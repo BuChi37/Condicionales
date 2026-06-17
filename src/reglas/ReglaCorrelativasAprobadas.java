@@ -2,8 +2,30 @@ package reglas;
 import infraestructura.ListaDoubleLinkedL;
 import modelo.*;
 
+
+/**
+ * Verifica el cumplimiento de las correlativas que
+ * requieren condición de aprobación.
+ *
+ * La regla permite que el alumno adeude como máximo
+ * una correlativa de este tipo, siempre que dicha
+ * materia se encuentre al menos regularizada.
+ *
+ * Devuelve un ResultadoRegla indicando si el alumno
+ * cumple la condición y el motivo correspondiente.
+ */
 public class ReglaCorrelativasAprobadas implements ReglaAcademica{
 	
+	
+	/**
+	 * Evalúa las correlativas de aprobación exigidas por
+	 * la materia solicitada.
+	 *
+	 * @param solic solicitud a evaluar.
+	 * @param plan plan de estudios utilizado para consultar
+	 *             correlatividades y condiciones requeridas.
+	 * @return resultado de la evaluación.
+	 */
 	public ResultadoRegla evaluar(SolicitudCondicional solic, PlanEstudio plan) {
 		int materiasAdeudadas=0;
 		boolean cumple=true;

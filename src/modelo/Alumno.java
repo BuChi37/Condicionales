@@ -12,7 +12,6 @@ public class Alumno {
 		this.nombre = nombre;
 		this.historial = new HistorialAlumnos();
 		
-		
 	}
 	
 	public void agregarEstado(EstadoMateria estado) {

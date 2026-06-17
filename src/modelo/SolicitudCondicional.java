@@ -3,13 +3,26 @@ package modelo;
 import infraestructura.Lista1DLinkedL;
 import infraestructura.ListaDoubleLinkedL;
 
+
+/**
+ * Representa una solicitud de cursado condicional
+ * realizada por un alumno.
+ *
+ * Almacena la materia solicitada, la información
+ * del alumno, el motivo de la solicitud y el
+ * dictamen resultante de la evaluación.
+ *
+ * Constituye la entidad central del proceso de
+ * gestión de condicionalidades.
+ */
 public class SolicitudCondicional {
-	private Alumno alumno;
-	private Materia materiaSolicitada;
-	private String fecha;
-	private String motivo;
-	private Lista1DLinkedL correlativasDeclaradas;
-	private Dictamen dictamenFinal;
+	
+	private Alumno alumno; //Alumno que realiza la solicitud.
+	private Materia materiaSolicitada; //Materia para la cual se solicita la condicionalidad.
+	private String fecha; //Fecha de creación de la solicitud.
+	private String motivo; //Motivo declarado por el alumno.
+	private Lista1DLinkedL correlativasDeclaradas; // Correlativas declaradas por el alumno al momento de realizar la solicitud.
+	private Dictamen dictamenFinal; // Resultado final de la evaluación. Permanece nulo mientras la solicitud no haya sido procesada.
 	
 	public SolicitudCondicional(Alumno alumno, Materia materiaSolicitada, String fecha, String motivo) {
 	    this.alumno = alumno;
@@ -54,10 +67,25 @@ public class SolicitudCondicional {
 	    return this.correlativasDeclaradas;
 	}
 	
+	
+	/**
+	 * Indica si la solicitud ya fue evaluada.
+	 *
+	 * @return true si existe un dictamen asociado.
+	 */
 	public boolean fueEvaluada() {
 		return this.dictamenFinal != null;
 	}
 	
+	
+	/**
+	 * Indica si la solicitud fue aprobada.
+	 *
+	 * Una solicitud no evaluada se considera
+	 * automáticamente no aprobada.
+	 *
+	 * @return true si el dictamen es aprobado.
+	 */
 	public boolean fueAprobada() {
 
 	    if (!fueEvaluada()) {
@@ -65,9 +93,16 @@ public class SolicitudCondicional {
 	    }
 	    return dictamenFinal.getEstado().equalsIgnoreCase("Aprobado");
 	}
+	
 	public String getEstado() {
-		return dictamenFinal.getEstado();
+
+	    if(!fueEvaluada()) {
+	        return "Pendiente";
+	    }
+
+	    return dictamenFinal.getEstado();
 	}
+	
 	@Override
 	public String toString() {
 	    return "SolicitudCondicional [alumno="+ alumno +", materiaSolicitada="+ materiaSolicitada +

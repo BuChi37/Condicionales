@@ -1,8 +1,28 @@
 package reglas;
 import infraestructura.ListaDoubleLinkedL;
 import modelo.*;
+
+/**
+ * Verifica que el alumno haya cumplido todas las
+ * correlativas correspondientes al primer año de
+ * la carrera.
+ *
+ * Esta regla aplica un criterio más estricto sobre
+ * las materias básicas del plan de estudios,
+ * exigiendo el cumplimiento completo de las
+ * correlatividades requeridas.
+ */
 public class ReglaPrimerAnio implements ReglaAcademica{
 	
+	/**
+	 * Evalúa el cumplimiento de las correlativas de
+	 * primer año asociadas a la materia solicitada.
+	 *
+	 * @param solic solicitud a evaluar.
+	 * @param plan plan de estudios utilizado para
+	 *             consultar materias y requisitos.
+	 * @return resultado de la evaluación.
+	 */
 	public ResultadoRegla evaluar(SolicitudCondicional solic, PlanEstudio plan) {
 		boolean cumple=true;
 		String motivo="";

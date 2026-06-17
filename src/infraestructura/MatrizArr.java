@@ -1,6 +1,7 @@
 package infraestructura;
 
 public class MatrizArr {
+	
 	protected Object[][] matriz;
 	protected int nroFilas, nroColumnas;
 	

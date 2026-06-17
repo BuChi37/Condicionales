@@ -1,6 +1,7 @@
 package infraestructura;
 
 public class MatrizGrafo extends MatrizArr{
+	
 	public MatrizGrafo(int ordenGrafo){
 		super(ordenGrafo, ordenGrafo);
 	}
