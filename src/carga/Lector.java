@@ -106,7 +106,7 @@ public class Lector {
 	            }
 	        
 	        }catch(Exception e){
-	            System.out.println(e);
+	            System.out.println(e +" 1");
 	        }
 		
 		
@@ -148,7 +148,7 @@ public class Lector {
 			
 			
 		}catch (Exception e) {
-			System.out.println(e);
+			System.out.println(e+" 2");
 		}
 		
 	}
@@ -165,13 +165,14 @@ public class Lector {
 	 */
 	public void leerAlumnos(String ruta, ListaAlumnos listaAlumnos){
         String rutaAlumno= ruta+"/alumnos.csv";
+        
         try(BufferedReader brA= new BufferedReader(new FileReader(rutaAlumno) ) ){
             String linea;
          
             
             while(  (linea= brA.readLine())!= null ){
                   
-                
+            	
                 if(linea.startsWith("\uFEFF")){
                     linea = linea.substring(1);
                 }
@@ -179,6 +180,7 @@ public class Lector {
                 
                 
                 int id = Integer.parseInt(datos[0].trim());
+                
                 String nombre = datos[1];
                 
                 Alumno alumno = new Alumno(id, nombre);
@@ -193,7 +195,7 @@ public class Lector {
             }
         
         }catch(Exception e){
-            System.out.println(e);
+            System.out.println(e+" 3");
         }
     }
 	
@@ -230,7 +232,7 @@ public class Lector {
             }
         
         }catch(Exception e){
-            System.out.println(e);
+            System.out.println(e+" 4");
         }
 		
 		

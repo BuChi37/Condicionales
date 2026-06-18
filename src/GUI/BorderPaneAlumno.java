@@ -253,13 +253,10 @@ public class BorderPaneAlumno extends BorderPane{
 					borderPaneMateria.getChildren().addAll(lblId, lblNombre,lblEstado,btnModificador);
 					VBoxHistorail.getChildren().add(borderPaneMateria);
 					
-					if(estadoMateria.getEstado() == EstadoAcademico.APROBADA) {
-						lblEstado.setStyle("-fx-text-fill: #2ecc71;");
-					}
-					if(estadoMateria.getEstado() == EstadoAcademico.REGULAR) {
-						
-						lblEstado.setStyle("-fx-text-fill: #3498db;");
-					}
+					asignarColorLabel(lblEstado, estadoMateria.getEstado());
+					
+					
+					
 					
 					if(bandera == false) {
 						borderPaneMateria.setStyle("-fx-background-color: #1E2640;"+"-fx-border-radius: 10px;"+"-fx-background-radius: 10px;");
@@ -481,28 +478,28 @@ public class BorderPaneAlumno extends BorderPane{
 	
 	public void asignarColorLabel(Label label, EstadoAcademico estado ) {
 		if(estado == EstadoAcademico.NO_CURSADA) {
-			
-			
-		}
-		
-		if(estado == EstadoAcademico.CURSANDO) {
+			label.setStyle("-fx-text-fill: gray");
 			
 		}
 		
 		if(estado == EstadoAcademico.CURSANDO) {
-			
+			label.setStyle("-fx-text-fill: #f39c12;");
+		}
+		
+		if(estado == EstadoAcademico.REGULAR) {
+			label.setStyle("-fx-text-fill: #3498db;");
 			
 		}
 		if(estado == EstadoAcademico.APROBADA) {
-			
+			label.setStyle("-fx-text-fill: #2ecc71;");
 		}
 		
 		if(estado == EstadoAcademico.DESAPROBADA) {
-			
+			label.setStyle("-fx-text-fill: orange;");
 		}
 		
 		if(estado== EstadoAcademico.LIBRE) {
-			
+			label.setStyle("-fx-text-fill: red;");
 		}
 	}
 	
