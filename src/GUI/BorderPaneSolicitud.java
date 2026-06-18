@@ -66,8 +66,7 @@ public class BorderPaneSolicitud extends BorderPane {
 		
 		CatalogoMaterias listaMaterias = plan.getCatalogoMaterias();
 	    
-	    // Pasamos los elementos de tu lista personalizada al ComboBox
-		cmbMateria.getItems().add("Ninguna");
+		cmbMateria.getItems().add("Todas");
 	    for (int i = 0; i < listaMaterias.tamanio(); i++) {
 	        Materia mat = (Materia) listaMaterias.devolver(i);
 	        cmbMateria.getItems().add(mat.getNombre());
@@ -93,7 +92,7 @@ public class BorderPaneSolicitud extends BorderPane {
 	public void crearPanelGrid() {
 		GridPane panel=new GridPane();
 		panel.setPadding(new Insets(15));
-	    panel.setHgap(20); // Espacio horizontal entre columnas
+	    panel.setHgap(20);
 	    panel.setVgap(10);
 	    panel.setAlignment(Pos.CENTER);
 	    
@@ -121,16 +120,16 @@ public class BorderPaneSolicitud extends BorderPane {
 	
 	public void accionBotonFiltro(Button filtrar, AnalizadorAcademico analizador) {
 		filtrar.setOnAction(event -> {
-		    // Capturamos y limpiamos espacios con trim()
+		    
 		    String legajo = this.TAlumno.getText().trim();
 		    String materia = this.cmbMateria.getValue();
 		    String estado = this.cmbEstado.getValue();
 		    if (estado == null) estado = "Todos";
-		    if(materia == null || materia.equalsIgnoreCase("ninguna")) materia ="";
-		    // Le mandamos todo al analizador. ¡No importa si van vacíos!
+		    if(materia == null || materia.equalsIgnoreCase("todas")) materia ="";
+		    
 		    ListaDoubleLinkedL resultados = analizador.filtrar(legajo, materia, estado);
 		    
-		    // Acá limpiás tu contenedor visual y dibujás los resultados...
+		    
 		    actualizarPantallaConResultados(resultados);
 		});
 		
@@ -149,7 +148,7 @@ public class BorderPaneSolicitud extends BorderPane {
 	        
 	        contenedorListado.setAlignment(javafx.geometry.Pos.CENTER);
 	        
-	        Label mensajeVacio = new Label("No hay solicitudes cargadas todavía.\nPresioná 'Nueva Solicitud' para empezar.");
+	        Label mensajeVacio = new Label("No hay solicitudes.");
 	        
 	        mensajeVacio.setStyle("-fx-text-fill: #7f8c8d; -fx-font-style: italic; -fx-text-alignment: center;");
 	        
@@ -165,7 +164,7 @@ public class BorderPaneSolicitud extends BorderPane {
 			for(int i=lista.cantidadSolicitudes()-1;i>=0;i--) {
 				
 				HBox filaSolicitud = new HBox(20); 
-				filaSolicitud.setAlignment(javafx.geometry.Pos.CENTER_LEFT); // Todo centrado verticalmente
+				filaSolicitud.setAlignment(javafx.geometry.Pos.CENTER_LEFT); 
 				
 				if(i%2==0) {
 					filaSolicitud.getStyleClass().add("panel-sol2");

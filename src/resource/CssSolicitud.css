@@ -84,9 +84,9 @@
 }
 /*1. El contenedor principal (VBox) */
 #formulario-carga {
-    -fx-background-color: #0c111c; /* Fondo oscuro idéntico a la app */
-    -fx-padding: 25px;            /* ◄ AIRE: Despega todo de los bordes de la ventana */
-    -fx-spacing: 12px;            /* Espaciado perfecto entre labels y campos */
+    -fx-background-color: #0c111c;
+    -fx-padding: 22px;            
+    -fx-spacing: 6px;           
 }
 
 /* Todos los Labels (Nombre:, Nro de Legajo:, etc.) */
@@ -96,6 +96,13 @@
     -fx-font-weight: bold;
     -fx-font-size: 14px;
 }
+#formulario-carga .label.error-campo {
+	-fx-text-fill: #ff6b6b;
+	-fx-font-size: 12px;
+	-fx-font-weight: normal;
+	-fx-padding: 0;
+}
+
 
 /*Los campos de texto (TextField) */
 #formulario-carga .text-input {
@@ -130,7 +137,7 @@
     -fx-background-color: #ffffff; /* Flechita/almanaque blanco */
 }
 
-/*  Los RadioButtons (¡La salvación de los textos negros!) */
+/*  Los RadioButtons  */
 #formulario-carga .radio-button {
     -fx-text-fill: #e0e6ed !important; /* Fuerza las letras a gris claro/blanco */
     -fx-font-size: 13px;
@@ -160,6 +167,7 @@
 .boton-cargar:hover {
     -fx-background-color: #27ae60; /* Se oscurece un poquito al pasar el mouse */
 }
+
 
 
 /* Estilo general para las letras de la fila */
@@ -355,7 +363,7 @@
 	-fx-padding: 0 0 5 0;
 }
 .date-picker-popup > .month-year-pane {
-    -fx-text-fill: #000000 !important; /* Fuerza el texto a negro */
+    -fx-text-fill: #000000 !important; 
 }
 
 /* Fuerza el color de los spinners (los controles de mes y año) */

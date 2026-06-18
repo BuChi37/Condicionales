@@ -1,5 +1,6 @@
 package modelo;
 
+
 public class Materia {
 	private int codigo;
 	private String nombre;
@@ -23,7 +24,11 @@ public class Materia {
 	
 	public boolean equals(Object elemento) {
 		
-		return (((Materia)elemento).getCodigo() == this.codigo);
+		if(this==elemento) return true;
+		if(elemento==null||getClass()!= elemento.getClass()) return false;
+		
+		Materia otraMateria=(Materia)elemento;
+		return otraMateria.getCodigo() == this.codigo;
 	}
 	
 	public boolean esIgual(String nombre) {

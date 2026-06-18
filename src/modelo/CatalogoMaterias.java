@@ -32,7 +32,7 @@ public class CatalogoMaterias extends Lista2DLinkedL{
 		return buscar(materia) != -1;
 	}
 	
-	public Materia devolverMateria(String nombre) {
+	public Materia getMateria(String nombre) {
 		
 		for(int i=1;i<=super.tamanio();i++) {
 			if (this.getMateria(i).esIgual(nombre)) {
