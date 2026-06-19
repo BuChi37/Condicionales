@@ -40,15 +40,23 @@ public class PanelMateria extends VBox {
         //crear panel y class
         AnalizadorAcademico analisador = new AnalizadorAcademico(plan);
         ListaDoubleLinkedL listaMaterias = new ListaDoubleLinkedL();
-        listaMaterias=analisador.materiasBloqueadas(materia);
         
-        Button btnBlock = new Button("bloqueadas");
+        listaMaterias=analisador.materiasBloqueadas(materia);
+        boolean tieneBloqueadas = listaMaterias.tamanio()>0;
+        
+        Button btnBlock = new Button("Bloquea: ");
         VBox panelBlock = new VBox();
+        
+        btnBlock.getStyleClass().add("btn-bloqueadas"); //modif
+        panelBlock.getStyleClass().add("panel-bloqueadas");//modif
         
         for(int i =0; i< listaMaterias.tamanio();i++ ) {
         	
         	Label lblMateriaBlock = new Label();
-        	lblMateriaBlock.setText(((Materia)listaMaterias.devolver(i)).getNombre());
+        	lblMateriaBlock.setText("- "+((Materia)listaMaterias.devolver(i)).getNombre()); //modif
+            
+            lblMateriaBlock.getStyleClass().add("texto-requisito"); //modif
+        	
         	panelBlock.getChildren().add(lblMateriaBlock);
         }
         panelBlock.setVisible(false);
@@ -57,26 +65,28 @@ public class PanelMateria extends VBox {
         
         
         
-        
-        
-        btnBlock.setOnAction(block ->{
-        	
-        	boolean visible =panelBlock.isVisible();
+        if(tieneBloqueadas) { //modif
+        	btnBlock.setOnAction(block ->{
+            	
+            	boolean visible =panelBlock.isVisible();
 
-            panelBlock.setVisible(!visible);
-            panelBlock.setManaged(!visible);
-            
-            if(visible)
-                btnBlock.setText("bloqueadas");
-            else
-                btnBlock.setText("Ocultar");
-        	
-        } );
+                panelBlock.setVisible(!visible);
+                panelBlock.setManaged(!visible);
+                
+                if(visible)
+                    btnBlock.setText("Bloquea: ");
+                else
+                    btnBlock.setText("Ocultar");
+            	
+            } );
+        }
+        
+        
         
         
         //fin
         
-        Button btn =new Button("Requisitos");
+        Button btn =new Button("Requiere: ");
 
         btn.getStyleClass().add("btn-requisitos");
         
@@ -93,13 +103,22 @@ public class PanelMateria extends VBox {
         ListaDoubleLinkedL correlativas = plan.obtenerCorrelativasDirectas( materia);
         
         boolean tieneRequisitos = correlativas.tamanio() > 0;
-
+        
+        if(tieneRequisitos && tieneBloqueadas) { //modif
+            fila.getChildren().addAll(btn,btnBlock);
+        }else {
+        	if(tieneRequisitos)
+        		fila.getChildren().add(btn);
+        	else
+        		fila.getChildren().add(btnBlock);
+        }
+/*
         if(tieneRequisitos) {
             fila.getChildren().addAll(btnBlock,btn);
         }else {
         	fila.getChildren().add(btnBlock);
         }
-
+*/
         for(int i=0;i<correlativas.tamanio();i++) {
 
             Materia corr =(Materia) correlativas.devolver(i);
@@ -131,7 +150,7 @@ public class PanelMateria extends VBox {
                 requisitos.setManaged(!visible);
                 
                 if(visible)
-                    btn.setText("Requisitos");
+                    btn.setText("Requiere: ");
                 else
                     btn.setText("Ocultar");
 
