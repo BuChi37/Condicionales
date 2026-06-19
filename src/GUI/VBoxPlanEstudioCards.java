@@ -60,11 +60,11 @@ public class VBoxPlanEstudioCards extends VBox {
         CatalogoMaterias catalogo = plan.getCatalogoMaterias();
 
         for(int i=0;i<catalogo.tamanio();i++) {
-
+        	
             Materia materia =(Materia) catalogo.devolver(i);
-
+            
             if(materia.getAnio() == anio) {
-
+            	
                 contenido.getChildren().add(new PanelMateria(materia,plan));
             }
         }

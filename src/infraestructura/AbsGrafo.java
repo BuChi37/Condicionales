@@ -102,9 +102,7 @@ public abstract class AbsGrafo implements OperacionesG{
 		
 		bea(listaMarca, v);	
 		
-		for(int j=0 ; j < listaMarca.tamanio(); j++ ){
-			System.out.println(listaMarca.devolver(j));
-		}
+		
 		return listaMarca;
 	}
 

@@ -96,6 +96,8 @@ public class PanelMateria extends VBox {
 
         if(tieneRequisitos) {
             fila.getChildren().addAll(btnBlock,btn);
+        }else {
+        	fila.getChildren().add(btnBlock);
         }
 
         for(int i=0;i<correlativas.tamanio();i++) {
