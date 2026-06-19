@@ -42,7 +42,7 @@ public class PanelMateria extends VBox {
         ListaDoubleLinkedL listaMaterias = new ListaDoubleLinkedL();
         listaMaterias=analisador.materiasBloqueadas(materia);
         
-        Button btnBlock = new Button("bloqueado");
+        Button btnBlock = new Button("bloqueadas");
         VBox panelBlock = new VBox();
         
         for(int i =0; i< listaMaterias.tamanio();i++ ) {
