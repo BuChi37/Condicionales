@@ -73,10 +73,16 @@ public abstract class AbsGrafo implements OperacionesG{
 		cola.meter(v);
 		
 		while (!cola.estaVacia()){
+			
 			w=(int)cola.sacar();
-			for (int z=0;z<getOrden();z++){
+			for (int z=1 ;z<getOrden();z++){
+				
 				marcado=(boolean)listaMarca.devolver(z);
-				currCost=(double)this.matrizCosto.devolver(w,z);
+				
+				currCost=(int)this.matrizCosto.devolver(w,z);
+				
+				
+				
 				if (currCost!=0 && !marcado){
 					listaMarca.reemplazar(true, z);
 					cola.meter(z);
@@ -89,12 +95,16 @@ public abstract class AbsGrafo implements OperacionesG{
 	public ListaDoubleLinkedL devolverBEA(int v) {
 		ListaDoubleLinkedL listaMarca = new ListaDoubleLinkedL();
 		
-		for (int m=0;m<getOrden();m++){
+		for (int m=0 ;m <=getOrden();m++){
 			listaMarca.insertar(false, m);
+			
 		}
 		
 		bea(listaMarca, v);	
 		
+		for(int j=0 ; j < listaMarca.tamanio(); j++ ){
+			System.out.println(listaMarca.devolver(j));
+		}
 		return listaMarca;
 	}
 

@@ -37,7 +37,7 @@ public class MatrizArr {
 	
 	public Object devolver(int posicionFila, int posicionColumna){
 		Object objElemento=null;
-
+		
 		if (posicionFila>=getNroFilas() || posicionFila<0){
 			System.out.println("Error devuelve. Posicion fila inexistente ");
 		}else{
@@ -47,6 +47,7 @@ public class MatrizArr {
 				objElemento = this.matriz[posicionFila][posicionColumna];
 			}				
 		}		
+		
 		return objElemento;
 	}	
 }

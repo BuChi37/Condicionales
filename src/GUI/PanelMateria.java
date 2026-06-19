@@ -11,9 +11,10 @@ import javafx.scene.layout.VBox;
 import modelo.Materia;
 import modelo.PlanEstudio;
 import modelo.TipoCondicion;
+import servicios.AnalizadorAcademico;
 
 public class PanelMateria extends VBox {
-
+		
     public PanelMateria( Materia materia,PlanEstudio plan) {
     	
     	getStyleClass().add("panel-materia");
@@ -36,7 +37,45 @@ public class PanelMateria extends VBox {
         
         fila.getChildren().add(nombre);
         
+        //crear panel y class
+        AnalizadorAcademico analisador = new AnalizadorAcademico(plan);
+        ListaDoubleLinkedL listaMaterias = new ListaDoubleLinkedL();
+        listaMaterias=analisador.materiasBloqueadas(materia);
+        
+        Button btnBlock = new Button("bloqueado");
+        VBox panelBlock = new VBox();
+        
+        for(int i =0; i< listaMaterias.tamanio();i++ ) {
+        	
+        	Label lblMateriaBlock = new Label();
+        	lblMateriaBlock.setText(((Materia)listaMaterias.devolver(i)).getNombre());
+        	panelBlock.getChildren().add(lblMateriaBlock);
+        }
+        panelBlock.setVisible(false);
+        panelBlock.setManaged(false);
+        
+        
+        
+        
+        
+        
+        btnBlock.setOnAction(block ->{
+        	
+        	boolean visible =panelBlock.isVisible();
 
+            panelBlock.setVisible(!visible);
+            panelBlock.setManaged(!visible);
+            
+            if(visible)
+                btnBlock.setText("bloqueadas");
+            else
+                btnBlock.setText("Ocultar");
+        	
+        } );
+        
+        
+        //fin
+        
         Button btn =new Button("Requisitos");
 
         btn.getStyleClass().add("btn-requisitos");
@@ -56,7 +95,7 @@ public class PanelMateria extends VBox {
         boolean tieneRequisitos = correlativas.tamanio() > 0;
 
         if(tieneRequisitos) {
-            fila.getChildren().add(btn);
+            fila.getChildren().addAll(btnBlock,btn);
         }
 
         for(int i=0;i<correlativas.tamanio();i++) {
@@ -98,7 +137,7 @@ public class PanelMateria extends VBox {
 
         }
 
-        getChildren().addAll(fila,requisitos);
+        getChildren().addAll(fila,requisitos,panelBlock);//ingreso del nuevo layout
         
         setStyle(
         	    "-fx-effect: dropshadow("
@@ -131,4 +170,7 @@ public class PanelMateria extends VBox {
                 return materia.getNombre();
         }
     }
+    
+    
+    
 }

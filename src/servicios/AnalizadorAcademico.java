@@ -58,9 +58,12 @@ public class AnalizadorAcademico {
 		ListaDoubleLinkedL materiasB=new ListaDoubleLinkedL();
 		
 		Materia materia2;
+		
 		ListaDoubleLinkedL marcas = plan.obtenerMateriasRelacionadas(materia);
 		
+		System.out.println(materia.getNombre());
 		for(int i=materia.getCodigo()+1;i<this.plan.getCatalogoMaterias().tamanio();i++) {
+			
 			materia2=plan.getCatalogoMaterias().getMateria(i);
 			
 			if((boolean) marcas.devolver(i)) {

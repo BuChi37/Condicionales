@@ -132,6 +132,8 @@ public class PlanEstudio {
 	    // 1. Traducimos la materia al índice numérico
 	    int ind = catMaterias.obtenerIndice(materiaOrigen);
 	    
+	    
+	    
 	    // 2. Ejecutamos el BEA una SOLA vez y retornamos toda la lista de marcas (true/false)
 	    return correlativas.devolverBEA(ind);
 	}

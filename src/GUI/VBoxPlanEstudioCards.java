@@ -1,5 +1,7 @@
 package GUI;
 
+import java.awt.Button;
+
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -22,7 +24,7 @@ public class VBoxPlanEstudioCards extends VBox {
         contenido.setStyle("-fx-background-color: #121824;");
 
         Label titulo = new Label("TECNICATURA UNIVERSITARIA EN PROGRAMACIÓN - Plan de Estudio 2012");
-
+        
         titulo.getStyleClass().add("titulo-plan");
         titulo.setMaxWidth(Double.MAX_VALUE);
 
